@@ -10,10 +10,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
-    
+
+    // boolean used to determine if the player is on the ground
     private bool _onGround;
 
+    // boolean used to keep track of if the jump buttons are pressed
     private bool _jumpPressed;
+
+    private List<GameObject> _collidingPlatforms = new();
     
     // Start is called before the first frame update
     void Start()
@@ -27,50 +31,14 @@ public class PlayerController : MonoBehaviour
     {
         bool jumpButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         if (jumpButtonPressed)
-        {
             _jumpPressed = true;
-            Debug.Log("Jump Pressed");
-        }
     }
 
     void FixedUpdate()
     {
-        TestIfOnGround();
-
-        // if (Input.GetKeyDown(KeyCode.W))
-        // {
-        //     Debug.Log("JUMPING");
-        //     _rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-        // }
-
-        // Debug.Log($"ON GROUND: {_onGround}");
-        
         MovementInput();
     }
 
-    private void TestIfOnGround()
-    {
-        // variable to determine how tall the sprite is
-        float rayCastLength = .5f + .025f;
-
-        // Layer mask to make sure the ray cast only detects platforms
-        LayerMask mask = LayerMask.GetMask("Ground");
-        
-        // the ray cast starts in the middle of the sprite and goes down the height of the sprite to determine if the sprite is on the ground
-        RaycastHit2D hit = Physics2D.Raycast(
-            origin: transform.position, 
-            direction:-transform.up,
-            distance: rayCastLength,
-            layerMask: mask);
-
-        _onGround = hit;
-
-        if (_onGround)
-            _spriteRenderer.color = Color.red;
-        else
-            _spriteRenderer.color = Color.white;
-    }
-    
     void MovementInput()
     {
         // Get the left and right movement input (A & D or Left & Right)
@@ -100,5 +68,44 @@ public class PlayerController : MonoBehaviour
             _jumpPressed = false;
         }
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Ground":
+                if (other.transform.position.y < transform.position.y)
+                    _collidingPlatforms.Add(other.gameObject);
+                break;
+            default:
+                break;
+        }
+        
+        DetermineIfOnGround();
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Ground":
+                _collidingPlatforms.Remove(other.gameObject);
+                break;
+            default:
+                break;
+        }
+        
+        DetermineIfOnGround();
+    }
+
+    private void DetermineIfOnGround()
+    {
+        _onGround = _collidingPlatforms.Count > 0;
+        
+        if (_onGround)
+            _spriteRenderer.color = Color.red;
+        else
+            _spriteRenderer.color = Color.white;
     }
 }
