@@ -131,9 +131,10 @@ public class PlayerController : MonoBehaviour
         // The player is on the ground if the list of colliding platforms is not empty.
         _onGround = _collidingPlatforms.Count > 0;
         
-        // Debugging help. Remove once the sprite is implemented.
+        // Debugging help. Sprite changes color when on the ground.
+        // Remove once the sprite is implemented.
         if (_onGround)
-            _spriteRenderer.color = Color.red;
+            _spriteRenderer.color = new Color(.6f, 1, .6f, 1);
         else
             _spriteRenderer.color = Color.white;
     }
