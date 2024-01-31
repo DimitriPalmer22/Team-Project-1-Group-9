@@ -15,9 +15,19 @@ public class PlayerController : MonoBehaviour
     private bool _onGround;
 
     // boolean used to keep track of if the jump buttons are pressed
-    private bool _jumpPressed;
+    private bool _jumpThisFrame;
 
-    private List<GameObject> _collidingPlatforms = new();
+    /// <summary>
+    /// List that keeps track of if the player is currently on a platform or not.
+    /// Used strictly to set the value of the _onGround variable.
+    /// </summary>
+    private readonly List<GameObject> _collidingPlatforms = new();
+
+    
+    [SerializeField] private int _health;
+    
+    // Variable used to determine how fast the player's gun should fire
+    [SerializeField] private float _bulletsPerMinute;
     
     // Start is called before the first frame update
     void Start()
@@ -29,16 +39,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool jumpButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-        if (jumpButtonPressed)
-            _jumpPressed = true;
+        MovementInput();
     }
 
     void FixedUpdate()
     {
-        MovementInput();
+        // Jump if the variable to jump this frame is true 
+        if (_jumpThisFrame)
+        {
+            // Jump using the rigid body
+            _rb.velocity = new Vector2(_rb.velocity.x, 0);
+            _rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            
+            // reset variables
+            _onGround = false;
+            _jumpThisFrame = false;
+        }
     }
 
+    
+    
+    /// <summary>
+    /// Function that contains the movement & jump logic
+    /// </summary>
     void MovementInput()
     {
         // Get the left and right movement input (A & D or Left & Right)
@@ -53,28 +76,26 @@ public class PlayerController : MonoBehaviour
             _spriteRenderer.flipX = false;
 
         // Move the player horizontally
+        // Use the transform.position to move the player for movement similar to the original metal slug
         transform.position += new Vector3(movementSpeed * horizontalInput, 0, 0) * Time.deltaTime;
-        // _rb.AddForce(new Vector2(horizontalInput, 0) * movementSpeed);
         
-        // Jump only if the player is on the ground
-        // bool jumpButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-        // if (_onGround)
-        if (_jumpPressed && _onGround)
-        {
-            _rb.velocity = new Vector2(_rb.velocity.x, 0);
-            _rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            
-            _onGround = false;
-            _jumpPressed = false;
-        }
-        
+        /* Test if the player has pressed the jump button this frame.
+         * If they have, set the variable that tells the script to jump during this frame
+         */
+        bool jumpButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+        if (jumpButtonPressed && _onGround)
+            _jumpThisFrame = true;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
         {
+            // Test if the player is currently touching a ground game object
             case "Ground":
+                /* Test if the ground is below the player.
+                 * If it is, then add it to the list of platforms the player is currently touching
+                 */
                 if (other.transform.position.y < transform.position.y)
                     _collidingPlatforms.Add(other.gameObject);
                 break;
@@ -89,6 +110,8 @@ public class PlayerController : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
+            // Test if the player just stopped touching a ground game object
+            // If they did, remove that platform from the list of colliding platforms
             case "Ground":
                 _collidingPlatforms.Remove(other.gameObject);
                 break;
@@ -99,10 +122,16 @@ public class PlayerController : MonoBehaviour
         DetermineIfOnGround();
     }
 
+    /// <summary>
+    /// Function used to determine if the player is currently on the ground.
+    /// The player is on the ground if the list of colliding platforms is not empty.
+    /// </summary>
     private void DetermineIfOnGround()
     {
+        // The player is on the ground if the list of colliding platforms is not empty.
         _onGround = _collidingPlatforms.Count > 0;
         
+        // Debugging help. Remove once the sprite is implemented.
         if (_onGround)
             _spriteRenderer.color = Color.red;
         else
