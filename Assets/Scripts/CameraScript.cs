@@ -3,19 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// An enum used to list the different modes the camera can be in
+/// </summary>
+public enum CameraMode
+{
+    // Follow the player
+    Follow,
+        
+    // Stay static at a fixed point
+    Fixed 
+}
+
 public class CameraScript : MonoBehaviour
 {
-    /// <summary>
-    /// An enum used to list the different modes the camera can be in
-    /// </summary>
-    public enum CameraMode
-    {
-        // Follow the player
-        Follow,
-        
-        // Stay static at a fixed point
-        Fixed 
-    }
+    private const float FixedPointTransitionTime = .5f;
     
     /// <summary>
     /// A single instance of this script that represents the only camera script in the current scene 
@@ -27,6 +29,8 @@ public class CameraScript : MonoBehaviour
     /// </summary>
     [SerializeField] private CameraMode cameraMode = CameraMode.Follow;
 
+    public CameraMode CameraMode => cameraMode;
+    
     /// <summary>
     /// The transform to follow when the camera is in "Follow" mode 
     /// </summary>
@@ -75,6 +79,7 @@ public class CameraScript : MonoBehaviour
     /// </summary>
     private void FollowTarget()
     {
+        // If there is no target object, skip
         if (targetObject == null)
             return;
         
@@ -84,8 +89,12 @@ public class CameraScript : MonoBehaviour
         transform.position = new Vector3(targetObject.position.x, cameraY, oldPosition.z);
     }
 
+    /// <summary>
+    /// Set the camera's position to the position of the fixed object.
+    /// </summary>
     private void SetPositionToFixedPoint()
     {
+        // If there is no fixed point, skip
         if (fixedPoint == null)
             return;
         
@@ -128,6 +137,17 @@ public class CameraScript : MonoBehaviour
     {
         fixedPoint = point;
         ChangeCameraMode(CameraMode.Fixed);
+    }
+
+    IEnumerator TransitionToFixedPoint()
+    {
+        float updatePrecision = .1f;
+        
+        for (float i = 0; i < FixedPointTransitionTime; i += updatePrecision)
+        {
+            Debug.Log($"I: {i}");
+            yield return new WaitForSeconds(updatePrecision);
+        }
     }
     
     
