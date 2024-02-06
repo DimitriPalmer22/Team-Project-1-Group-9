@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  fixedPoint: {fileID: 0}
+  fixedPoint: {fileID: 1070966467}
 --- !u!212 &1669677677
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 2090725945}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -704,10 +704,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.40679514, y: 0.5302217}
+  m_Offset: {x: 0.05, y: 0.5302217}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5122699, y: 0}
+    pivot: {x: 0.33, y: 0}
     oldSize: {x: 2.546875, y: 1.578125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
