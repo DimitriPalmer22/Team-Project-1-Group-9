@@ -22,24 +22,39 @@ public class PlayerController : MonoBehaviour
     /// Used strictly to set the value of the _onGround variable.
     /// </summary>
     private readonly List<GameObject> _collidingPlatforms = new();
-
     
     [SerializeField] private int _health;
     
     // Variable used to determine how fast the player's gun should fire
     [SerializeField] private float _bulletsPerMinute;
+
+    [SerializeField] private float _bulletVelocity;
+
+    // A boolean used to determine if the player can shoot again
+    private bool _canFire = true;
+
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firingPoint;
+    private Vector2 _firingPointOffset;
+    private bool rightOrLeft = false;
     
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _canFire = true;
+
+        _firingPointOffset = firingPoint.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
         MovementInput();
+        
+        FireInput();
     }
 
     void FixedUpdate()
@@ -56,8 +71,6 @@ public class PlayerController : MonoBehaviour
             _jumpThisFrame = false;
         }
     }
-
-    
     
     /// <summary>
     /// Function that contains the movement & jump logic
@@ -70,11 +83,17 @@ public class PlayerController : MonoBehaviour
         // Flip sprite depending on which direction the player is moving
         // Going left
         if (horizontalInput < 0)
-            _spriteRenderer.flipX = true;
+        {
+            _spriteRenderer.flipX = rightOrLeft = true;
+            firingPoint.localPosition = new Vector3(-_firingPointOffset.x, _firingPointOffset.y, 0);
+        }
         // Going right
         else if (horizontalInput > 0)
-            _spriteRenderer.flipX = false;
-
+        {
+            _spriteRenderer.flipX = rightOrLeft = false;
+            firingPoint.localPosition = new Vector3(_firingPointOffset.x, _firingPointOffset.y, 0);
+        }
+        
         // Move the player horizontally
         // Use the transform.position to move the player for movement similar to the original metal slug
         transform.position += new Vector3(movementSpeed * horizontalInput, 0, 0) * Time.deltaTime;
@@ -82,11 +101,43 @@ public class PlayerController : MonoBehaviour
         /* Test if the player has pressed the jump button this frame.
          * If they have, set the variable that tells the script to jump during this frame
          */
-        bool jumpButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+        bool jumpButtonPressed = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         if (jumpButtonPressed && _onGround)
             _jumpThisFrame = true;
     }
 
+    /// <summary>
+    /// Test if the player is shooting
+    /// </summary>
+    void FireInput()
+    {
+        if (!Input.GetKey(KeyCode.Space))
+            return;
+        
+        if (!_canFire)
+            return;
+
+        _canFire = false;
+        Debug.Log("Shoot");
+        
+        var bulletObject = Instantiate(bulletPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
+        var bulletScript = bulletObject.GetComponent<BulletScript>();
+
+        var bVel = (rightOrLeft) ? -_bulletVelocity : _bulletVelocity;
+        
+        bulletScript.MoveBullet(new Vector2(bVel, 0));
+        
+        StartCoroutine(TickFireRate());
+    }
+
+    IEnumerator TickFireRate()
+    {
+        yield return new WaitForSeconds(_bulletsPerMinute / 60f);
+
+        _canFire = true;
+
+    }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
@@ -96,9 +147,11 @@ public class PlayerController : MonoBehaviour
                 /* Test if the ground is below the player.
                  * If it is, then add it to the list of platforms the player is currently touching
                  */
+                
                 if (other.transform.position.y < transform.position.y)
                     _collidingPlatforms.Add(other.gameObject);
                 break;
+            
             default:
                 break;
         }

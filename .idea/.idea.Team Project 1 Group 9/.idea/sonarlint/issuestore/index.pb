@@ -5,3 +5,7 @@ N
 Assets/Scripts/CameraScript.cs,0\4\04cf22e4f5704b37e3910bcdfb01bac9bf441036
 U
 %Assets/Scripts/CameraTriggerScript.cs,1\5\154e8ccbbd801dc093af4145f070da8bf5d58f6f
+M
+Assets/Scripts/EnemyScript.cs,e\0\e03e8321b12aac7aeccb33ecaa19b4f967e91a46
+N
+Assets/Scripts/BulletScript.cs,2\4\24989a5f1c1b56ce30f3734d2eb39d7f52dbb340
