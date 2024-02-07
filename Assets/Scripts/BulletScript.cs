@@ -37,6 +37,24 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // skip this function if the bullet collides with something other than a player or enemy
+        switch (other.gameObject.tag)
+        {
+            case "Enemy":
+                var enemyScript = other.GetComponent<EnemyScript>();
+                enemyScript.LoseHealth(1);
+                break;
+            case "Player":
+                break;
+            case "Ground":
+                // destroy the bullet if it hits the tilemap
+                Destroy(gameObject);
+                break;
+            default:
+                return;
+        }
         
+        // destroy the bullet if it hits an enemy or player
+        Destroy(gameObject);
     }
 }

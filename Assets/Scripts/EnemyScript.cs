@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    [SerializeField] private int health;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +18,12 @@ public class EnemyScript : MonoBehaviour
     {
         
     }
+
+    public void LoseHealth(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+            Destroy(gameObject);
+    }
+    
 }
