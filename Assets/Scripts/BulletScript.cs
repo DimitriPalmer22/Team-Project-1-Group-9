@@ -7,8 +7,8 @@ public class BulletScript : MonoBehaviour
 {
     private const float Duration = 5;
     
-    
     private Vector2 _velocity;
+    private string _shooterTag;
 
     private float _remainingDuration = Duration;
     
@@ -29,14 +29,25 @@ public class BulletScript : MonoBehaviour
         transform.position += new Vector3(_velocity.x, _velocity.y, 0) * Time.deltaTime;
     }
 
-    public void MoveBullet(Vector2 velocity)
+    /// <summary>
+    /// Start the movement of the bullet after its instantiated
+    /// </summary>
+    /// <param name="velocity">How fast the bullet moves</param>
+    /// <param name="shooterTag">Tag of the person who shot the bullet</param>
+    public void MoveBullet(Vector2 velocity, string shooterTag)
     {
+        _shooterTag = shooterTag;
+        
         _velocity = velocity;
         Debug.Log($"SET VELOCITY TO: {velocity}");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // skip the function if friendly fire
+        if (other.gameObject.CompareTag(_shooterTag))
+            return;
+        
         // skip this function if the bullet collides with something other than a player or enemy
         switch (other.gameObject.tag)
         {
@@ -47,7 +58,7 @@ public class BulletScript : MonoBehaviour
             case "Player":
                 break;
             case "Ground":
-                // destroy the bullet if it hits the tilemap
+                // destroy the bullet if it hits the tile map
                 Destroy(gameObject);
                 break;
             default:

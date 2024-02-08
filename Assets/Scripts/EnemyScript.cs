@@ -19,11 +19,23 @@ public class EnemyScript : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Handle what happens when the enemy gets hit and takes damage
+    /// </summary>
+    /// <param name="amount"></param>
     public void LoseHealth(int amount)
     {
         health -= amount;
         if (health <= 0)
-            Destroy(gameObject);
+            Die();
+    }
+
+    /// <summary>
+    /// Handle what happens when the enemy dies
+    /// </summary>
+    private void Die()
+    {
+        Destroy(gameObject);
     }
     
 }

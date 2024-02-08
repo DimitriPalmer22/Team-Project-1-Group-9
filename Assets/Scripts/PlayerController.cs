@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
         var bVel = (rightOrLeft) ? -_bulletVelocity : _bulletVelocity;
         
-        bulletScript.MoveBullet(new Vector2(bVel, 0));
+        bulletScript.MoveBullet(new Vector2(bVel, 0), tag);
         
         StartCoroutine(TickFireRate());
     }
