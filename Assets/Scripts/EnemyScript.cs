@@ -2,38 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : Actor
 {
-    [SerializeField] private int health;
-    
-    
-    // Start is called before the first frame update
-    void Start()
+    protected override Vector2 MovementInput()
     {
-        
+        return Vector2.zero;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override bool FireInput()
     {
-        
+        return false;
     }
 
-    /// <summary>
-    /// Handle what happens when the enemy gets hit and takes damage
-    /// </summary>
-    /// <param name="amount"></param>
-    public void LoseHealth(int amount)
-    {
-        health -= amount;
-        if (health <= 0)
-            Die();
-    }
 
-    /// <summary>
-    /// Handle what happens when the enemy dies
-    /// </summary>
-    private void Die()
+    protected override void Die()
     {
         Destroy(gameObject);
     }

@@ -3,13 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Actor
 {
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
-
-    private Rigidbody2D _rb;
-    private SpriteRenderer _spriteRenderer;
 
     // boolean used to determine if the player is on the ground
     private bool _onGround;
@@ -22,43 +19,19 @@ public class PlayerController : MonoBehaviour
     /// Used strictly to set the value of the _onGround variable.
     /// </summary>
     private readonly List<GameObject> _collidingPlatforms = new();
-    
-    [SerializeField] private int _health;
-    
-    // Variable used to determine how fast the player's gun should fire
-    [SerializeField] private float _bulletsPerMinute;
-
-    [SerializeField] private float _bulletVelocity;
-
-    // A boolean used to determine if the player can shoot again
-    private bool _canFire = true;
-
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firingPoint;
-    private Vector2 _firingPointOffset;
-    private bool rightOrLeft = false;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-
-        _canFire = true;
-
-        _firingPointOffset = firingPoint.localPosition;
-    }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        MovementInput();
+        base.Update();
         
         FireInput();
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+        
         // Jump if the variable to jump this frame is true 
         if (_jumpThisFrame)
         {
@@ -75,24 +48,10 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Function that contains the movement & jump logic
     /// </summary>
-    void MovementInput()
+    protected override Vector2 MovementInput()
     {
         // Get the left and right movement input (A & D or Left & Right)
         var horizontalInput = Input.GetAxisRaw("Horizontal");
-        
-        // Flip sprite depending on which direction the player is moving
-        // Going left
-        if (horizontalInput < 0)
-        {
-            _spriteRenderer.flipX = rightOrLeft = true;
-            firingPoint.localPosition = new Vector3(-_firingPointOffset.x, _firingPointOffset.y, 0);
-        }
-        // Going right
-        else if (horizontalInput > 0)
-        {
-            _spriteRenderer.flipX = rightOrLeft = false;
-            firingPoint.localPosition = new Vector3(_firingPointOffset.x, _firingPointOffset.y, 0);
-        }
         
         // Move the player horizontally
         // Use the transform.position to move the player for movement similar to the original metal slug
@@ -104,40 +63,24 @@ public class PlayerController : MonoBehaviour
         bool jumpButtonPressed = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         if (jumpButtonPressed && _onGround)
             _jumpThisFrame = true;
-    }
 
+        return new Vector2(horizontalInput, 0);
+    }
+    
     /// <summary>
     /// Test if the player is shooting
     /// </summary>
-    void FireInput()
+    protected override bool FireInput()
     {
         if (!Input.GetKey(KeyCode.Space))
-            return;
+            return false;
         
         if (!_canFire)
-            return;
+            return false;
 
-        _canFire = false;
-        Debug.Log("Shoot");
-        
-        var bulletObject = Instantiate(bulletPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
-        var bulletScript = bulletObject.GetComponent<BulletScript>();
-
-        var bVel = (rightOrLeft) ? -_bulletVelocity : _bulletVelocity;
-        
-        bulletScript.MoveBullet(new Vector2(bVel, 0), tag);
-        
-        StartCoroutine(TickFireRate());
+        return true;
     }
 
-    IEnumerator TickFireRate()
-    {
-        yield return new WaitForSeconds(_bulletsPerMinute / 60f);
-
-        _canFire = true;
-
-    }
-    
     private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
@@ -190,5 +133,10 @@ public class PlayerController : MonoBehaviour
             _spriteRenderer.color = new Color(.6f, 1, .6f, 1);
         else
             _spriteRenderer.color = Color.white;
+    }
+    
+    protected override void Die()
+    {
+        // TODO: Die
     }
 }

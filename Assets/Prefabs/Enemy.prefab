@@ -146,4 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e71d3a3a9ba9b4b934b8902214c0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  _health: 1
+  _bulletsPerMinute: 0
+  _bulletVelocity: 0
+  bulletPrefab: {fileID: 0}
+  firingPoint: {fileID: 0}
