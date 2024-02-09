@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Actor : MonoBehaviour
@@ -44,7 +42,7 @@ public abstract class Actor : MonoBehaviour
     
     // a vector2 to determine how far away the 
     private Vector2 _firingPointOffset;
-    private bool rightOrLeft;
+    private bool _rightOrLeft;
     
     // Particles variables
     
@@ -130,7 +128,7 @@ public abstract class Actor : MonoBehaviour
         // Going left
         if (horizontalInput < 0)
         {
-            _spriteRenderer.flipX = rightOrLeft = true;
+            _spriteRenderer.flipX = _rightOrLeft = true;
             firingPoint.localPosition = new Vector3(-_firingPointOffset.x, _firingPointOffset.y, 0);
             
             // Flip the shooting particle emitter
@@ -140,7 +138,7 @@ public abstract class Actor : MonoBehaviour
         // Going right
         else if (horizontalInput > 0)
         {
-            _spriteRenderer.flipX = rightOrLeft = false;
+            _spriteRenderer.flipX = _rightOrLeft = false;
             firingPoint.localPosition = new Vector3(_firingPointOffset.x, _firingPointOffset.y, 0);
 
             // Flip the shooting particle emitter
@@ -183,7 +181,7 @@ public abstract class Actor : MonoBehaviour
         var bulletScript = bulletObject.GetComponent<BulletScript>();
 
         // determine which direction vector the bullet is going to use
-        var bulletVelocity = rightOrLeft ? -_bulletVelocity : _bulletVelocity;
+        var bulletVelocity = _rightOrLeft ? -_bulletVelocity : _bulletVelocity;
         
         // start moving the bullet
         bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag, _bulletDamage);
