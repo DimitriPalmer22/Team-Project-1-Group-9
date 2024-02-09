@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Actor
 {
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float jumpForce;
 
-    private Rigidbody2D _rb;
-    private SpriteRenderer _spriteRenderer;
 
     // boolean used to determine if the player is on the ground
     private bool _onGround;
@@ -23,27 +19,18 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private readonly List<GameObject> _collidingPlatforms = new();
 
-    
-    [SerializeField] private int _health;
-    
-    // Variable used to determine how fast the player's gun should fire
-    [SerializeField] private float _bulletsPerMinute;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        MovementInput();
+        base.Update();
+        
+        FireInput();
     }
 
-    void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+        
         // Jump if the variable to jump this frame is true 
         if (_jumpThisFrame)
         {
@@ -56,35 +43,38 @@ public class PlayerController : MonoBehaviour
             _jumpThisFrame = false;
         }
     }
-
-    
     
     /// <summary>
     /// Function that contains the movement & jump logic
     /// </summary>
-    void MovementInput()
+    protected override Vector2 MovementInput()
     {
         // Get the left and right movement input (A & D or Left & Right)
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         
-        // Flip sprite depending on which direction the player is moving
-        // Going left
-        if (horizontalInput < 0)
-            _spriteRenderer.flipX = true;
-        // Going right
-        else if (horizontalInput > 0)
-            _spriteRenderer.flipX = false;
-
-        // Move the player horizontally
-        // Use the transform.position to move the player for movement similar to the original metal slug
-        transform.position += new Vector3(movementSpeed * horizontalInput, 0, 0) * Time.deltaTime;
         
         /* Test if the player has pressed the jump button this frame.
          * If they have, set the variable that tells the script to jump during this frame
          */
-        bool jumpButtonPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+        bool jumpButtonPressed = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         if (jumpButtonPressed && _onGround)
             _jumpThisFrame = true;
+
+        return new Vector2(horizontalInput, 0);
+    }
+    
+    /// <summary>
+    /// Test if the player is shooting
+    /// </summary>
+    protected override bool FireInput()
+    {
+        if (!Input.GetKey(KeyCode.Space))
+            return false;
+        
+        if (!_canFire)
+            return false;
+
+        return true;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -96,10 +86,9 @@ public class PlayerController : MonoBehaviour
                 /* Test if the ground is below the player.
                  * If it is, then add it to the list of platforms the player is currently touching
                  */
+                
                 if (other.transform.position.y < transform.position.y)
                     _collidingPlatforms.Add(other.gameObject);
-                break;
-            default:
                 break;
         }
         
@@ -114,8 +103,6 @@ public class PlayerController : MonoBehaviour
             // If they did, remove that platform from the list of colliding platforms
             case "Ground":
                 _collidingPlatforms.Remove(other.gameObject);
-                break;
-            default:
                 break;
         }
         
@@ -137,5 +124,10 @@ public class PlayerController : MonoBehaviour
             _spriteRenderer.color = new Color(.6f, 1, .6f, 1);
         else
             _spriteRenderer.color = Color.white;
+    }
+    
+    protected override void Die()
+    {
+        // TODO: Die
     }
 }
