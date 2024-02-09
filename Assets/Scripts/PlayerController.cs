@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerController : Actor
 {
-
-
     // boolean used to determine if the player is on the ground
     private bool _onGround;
 
@@ -34,6 +32,8 @@ public class PlayerController : Actor
         // Jump if the variable to jump this frame is true 
         if (_jumpThisFrame)
         {
+            Jump();
+            
             // Jump using the rigid body
             _rb.velocity = new Vector2(_rb.velocity.x, 0);
             _rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);

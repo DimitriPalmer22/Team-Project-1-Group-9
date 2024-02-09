@@ -6,6 +6,8 @@ using UnityEngine;
 public abstract class Actor : MonoBehaviour
 {
 
+    #region Variables
+    
     // Unity components
     protected Rigidbody2D _rb;
     protected SpriteRenderer _spriteRenderer;
@@ -44,6 +46,18 @@ public abstract class Actor : MonoBehaviour
     private Vector2 _firingPointOffset;
     private bool rightOrLeft;
     
+    // Particles variables
+    
+    // Variable for the particle system used when shooting
+    private ParticleSystem _shootingParticleSystem;
+
+    // Variable for the particle system used when jumping
+    private ParticleSystem _jumpingParticleSystem;
+
+    #endregion Variables
+
+    #region Unity Event Methods
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -53,6 +67,10 @@ public abstract class Actor : MonoBehaviour
         
         // Save the offset of the firing point so that it flips when the player changes directions
         _firingPointOffset = firingPoint.localPosition;
+        
+        // Get particle systems
+        _shootingParticleSystem = firingPoint.GetComponent<ParticleSystem>();
+        _jumpingParticleSystem = GetComponent<ParticleSystem>();
         
     }
 
@@ -72,6 +90,10 @@ public abstract class Actor : MonoBehaviour
         MoveRigidBody();
     }
 
+    #endregion
+    
+    #region Movement Methods
+    
     /// <summary>
     /// Function that contains the movement & jump logic
     /// </summary>
@@ -103,6 +125,16 @@ public abstract class Actor : MonoBehaviour
         _rb.velocity = new Vector2(movementSpeed * _movementInput.x, _rb.velocity.y);
     }
 
+    protected void Jump()
+    {
+        // Emit the shooting particle system
+        _jumpingParticleSystem.Emit(100);
+    }
+    
+    #endregion
+    
+    #region Shooting and Combat Methods
+
     protected abstract bool FireInput();
 
     /// <summary>
@@ -125,6 +157,9 @@ public abstract class Actor : MonoBehaviour
         
         // Start a coroutine to tick the gun's fire rate
         StartCoroutine(TickFireRate());
+        
+        // Emit the shooting particle system
+        _shootingParticleSystem.Emit(100);
     }
     
     /// <summary>
@@ -158,4 +193,7 @@ public abstract class Actor : MonoBehaviour
         if (_health <= 0)
             Die();
     }
+    
+    #endregion
+    
 }
