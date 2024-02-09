@@ -64,6 +64,7 @@ public abstract class Actor : MonoBehaviour
     // Sound that plays when this actor shoots
     [SerializeField] private AudioClip shootSound;
 
+    // Sound that plays when this actor jumps
     [SerializeField] private AudioClip jumpSound;
 
     // Audio source that is responsible for playing hit and shoot sounds
@@ -118,6 +119,10 @@ public abstract class Actor : MonoBehaviour
     /// </summary>
     protected abstract Vector2 MovementInput();
 
+    /// <summary>
+    /// Flip the way the sprite is facing based on the actor's horizontal movement
+    /// </summary>
+    /// <param name="horizontalInput">The actor's horizontal movement input</param>
     private void DetermineSpriteDirection(float horizontalInput)
     {
         // Flip sprite depending on which direction the player is moving

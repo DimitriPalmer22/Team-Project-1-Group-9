@@ -29,7 +29,9 @@ public class PlayerController : Actor
     {
         base.FixedUpdate();
         
-        // Jump if the variable to jump this frame is true 
+        // Jump if the variable to jump this frame is true
+        // the input for the player to jump is inside update
+        // the method of actually jumping is in the fixed update due to using rigid body
         if (_jumpThisFrame)
         {
             Jump();
@@ -52,10 +54,8 @@ public class PlayerController : Actor
         // Get the left and right movement input (A & D or Left & Right)
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         
-        
-        /* Test if the player has pressed the jump button this frame.
-         * If they have, set the variable that tells the script to jump during this frame
-         */
+        // Test if the player has pressed the jump button this frame.
+        // If they have, set the variable that tells the script to jump during this frame
         bool jumpButtonPressed = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         if (jumpButtonPressed && _onGround)
             _jumpThisFrame = true;
@@ -89,6 +89,7 @@ public class PlayerController : Actor
                 
                 if (other.transform.position.y < transform.position.y)
                     _collidingPlatforms.Add(other.gameObject);
+                
                 break;
         }
         
