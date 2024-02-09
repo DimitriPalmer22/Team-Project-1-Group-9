@@ -53,7 +53,23 @@ public abstract class Actor : MonoBehaviour
 
     // Variable for the particle system used when jumping
     private ParticleSystem _jumpingParticleSystem;
+    
+    // Audio Variables
+    
+    [Header("Audio")]
 
+    // Sound that plays when this actor takes damage
+    [SerializeField] private AudioClip hurtSound;
+    
+    // Sound that plays when this actor shoots
+    [SerializeField] private AudioClip shootSound;
+
+    [SerializeField] private AudioClip jumpSound;
+
+    // Audio source that is responsible for playing hit and shoot sounds
+    private AudioSource _audioSource;
+
+    
     #endregion Variables
 
     #region Unity Event Methods
@@ -71,6 +87,9 @@ public abstract class Actor : MonoBehaviour
         // Get particle systems
         _shootingParticleSystem = firingPoint.GetComponent<ParticleSystem>();
         _jumpingParticleSystem = GetComponent<ParticleSystem>();
+        
+        // Get audio source
+        _audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -138,6 +157,9 @@ public abstract class Actor : MonoBehaviour
     {
         // Emit the shooting particle system
         _jumpingParticleSystem.Emit(100);
+        
+        // Play the jump sound
+        PlaySound(jumpSound);
     }
     
     #endregion
@@ -169,6 +191,9 @@ public abstract class Actor : MonoBehaviour
         
         // Emit the shooting particle system
         _shootingParticleSystem.Emit(100);
+        
+        // Play the shoot sound
+        PlaySound(shootSound);
     }
     
     /// <summary>
@@ -198,11 +223,27 @@ public abstract class Actor : MonoBehaviour
         // Lose health
         _health -= amount;
         
+        // Play the hurt sound
+        PlaySound(hurtSound);
+        
         // Die if health is too low
         if (_health <= 0)
             Die();
     }
     
     #endregion
+    
+    private void PlaySound(AudioClip clip)
+    {
+        // skip this function if the clip is null
+        if (clip == null)
+            return;
+        
+        // Swap the clip
+        _audioSource.clip = clip;
+        
+        // Play the clip
+        _audioSource.Play();
+    }
     
 }
