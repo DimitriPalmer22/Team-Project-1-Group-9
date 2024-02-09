@@ -94,9 +94,6 @@ public class PlayerController : Actor
                 if (other.transform.position.y < transform.position.y)
                     _collidingPlatforms.Add(other.gameObject);
                 break;
-            
-            default:
-                break;
         }
         
         DetermineIfOnGround();
@@ -110,8 +107,6 @@ public class PlayerController : Actor
             // If they did, remove that platform from the list of colliding platforms
             case "Ground":
                 _collidingPlatforms.Remove(other.gameObject);
-                break;
-            default:
                 break;
         }
         

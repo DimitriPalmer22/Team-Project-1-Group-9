@@ -11,7 +11,10 @@ public class EnemyScript : Actor
 
     protected override bool FireInput()
     {
-        return false;
+        if (!_canFire)
+            return false;
+        
+        return true;
     }
 
 
