@@ -108,12 +108,21 @@ public abstract class Actor : MonoBehaviour
         {
             _spriteRenderer.flipX = rightOrLeft = true;
             firingPoint.localPosition = new Vector3(-_firingPointOffset.x, _firingPointOffset.y, 0);
+            
+            // Flip the shooting particle emitter
+            var shape = _shootingParticleSystem.shape;
+            shape.rotation = new Vector3(shape.rotation.x, -90, shape.rotation.z);
         }
         // Going right
         else if (horizontalInput > 0)
         {
             _spriteRenderer.flipX = rightOrLeft = false;
             firingPoint.localPosition = new Vector3(_firingPointOffset.x, _firingPointOffset.y, 0);
+
+            // Flip the shooting particle emitter
+            var shape = _shootingParticleSystem.shape;
+            shape.rotation = new Vector3(shape.rotation.x, 90, shape.rotation.z);
+            
         }
     }
 

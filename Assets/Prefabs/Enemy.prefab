@@ -155,7 +155,7 @@ MonoBehaviour:
   _bulletVelocity: 6
   _bulletDamage: 1
   bulletPrefab: {fileID: 3969109867601141775, guid: eeabf76ee7a070f4fb3091f5f8d2de72, type: 3}
-  firingPoint: {fileID: 0}
+  firingPoint: {fileID: 1227803539823165894}
   _health: 1
 --- !u!198 &659028047756232100
 ParticleSystem:
