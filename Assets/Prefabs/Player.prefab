@@ -111,6 +111,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3212702969348104815, guid: 10247b486fa4c9e45a0d55c9e29873e7, type: 3}
   firingPoint: {fileID: 2539115130748907927}
   _health: 3
+  hurtSound: {fileID: 8300000, guid: 5cb93c6918f1edb4dbb2c0bb45edd64b, type: 3}
+  shootSound: {fileID: 8300000, guid: 6109fcb1366ac474dbbd54667397a600, type: 3}
 --- !u!50 &1067764871109330723
 Rigidbody2D:
   serializedVersion: 4
