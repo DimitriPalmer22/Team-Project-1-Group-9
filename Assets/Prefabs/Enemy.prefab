@@ -160,6 +160,7 @@ MonoBehaviour:
   _health: 1
   hurtSound: {fileID: 8300000, guid: 5cb93c6918f1edb4dbb2c0bb45edd64b, type: 3}
   shootSound: {fileID: 8300000, guid: 6109fcb1366ac474dbbd54667397a600, type: 3}
+  jumpSound: {fileID: 8300000, guid: e4c8bb2aa41130e4d8105b529e7c50dc, type: 3}
 --- !u!198 &659028047756232100
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4951,8 +4952,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
-  m_Pitch: 1
+  m_Volume: 0.4
+  m_Pitch: 0.8
   Loop: 0
   Mute: 0
   Spatialize: 0

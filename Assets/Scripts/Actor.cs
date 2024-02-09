@@ -57,9 +57,6 @@ public abstract class Actor : MonoBehaviour
     // Audio Variables
     
     [Header("Audio")]
-    
-    // Audio source that is responsible for playing hit and shoot sounds
-    private AudioSource _audioSource;
 
     // Sound that plays when this actor takes damage
     [SerializeField] private AudioClip hurtSound;
@@ -67,6 +64,12 @@ public abstract class Actor : MonoBehaviour
     // Sound that plays when this actor shoots
     [SerializeField] private AudioClip shootSound;
 
+    [SerializeField] private AudioClip jumpSound;
+
+    // Audio source that is responsible for playing hit and shoot sounds
+    private AudioSource _audioSource;
+
+    
     #endregion Variables
 
     #region Unity Event Methods
@@ -154,6 +157,9 @@ public abstract class Actor : MonoBehaviour
     {
         // Emit the shooting particle system
         _jumpingParticleSystem.Emit(100);
+        
+        // Play the jump sound
+        PlaySound(jumpSound);
     }
     
     #endregion
