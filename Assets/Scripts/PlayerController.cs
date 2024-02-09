@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class PlayerController : Actor
 {
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float jumpForce;
+
 
     // boolean used to determine if the player is on the ground
     private bool _onGround;
@@ -53,9 +52,6 @@ public class PlayerController : Actor
         // Get the left and right movement input (A & D or Left & Right)
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         
-        // Move the player horizontally
-        // Use the transform.position to move the player for movement similar to the original metal slug
-        transform.position += new Vector3(movementSpeed * horizontalInput, 0, 0) * Time.deltaTime;
         
         /* Test if the player has pressed the jump button this frame.
          * If they have, set the variable that tells the script to jump during this frame

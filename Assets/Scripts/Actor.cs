@@ -9,13 +9,20 @@ public abstract class Actor : MonoBehaviour
     // Unity components
     protected Rigidbody2D _rb;
     protected SpriteRenderer _spriteRenderer;
+
+    private Vector2 _movementInput;
     
-    [SerializeField] private int _health;
+    // Movement variables
+    [Header("Movement")]
+    [SerializeField] protected float movementSpeed;
+    [SerializeField] protected float jumpForce;
+    
     
     // Shooting variables
-    
     // A boolean used to determine if the player can shoot again
     protected bool _canFire = true;
+    
+    [Header("Shooting")]
     
     // Variable used to determine how fast the player's gun should fire
     [SerializeField] protected float _bulletsPerMinute;
@@ -29,9 +36,11 @@ public abstract class Actor : MonoBehaviour
     // A transform to use as a starting point for projectiles
     [SerializeField] protected Transform firingPoint;
     
+    [SerializeField] private int _health;
+    
     // a vector2 to determine how far away the 
     private Vector2 _firingPointOffset;
-    private bool rightOrLeft = false;
+    private bool rightOrLeft;
     
     // Start is called before the first frame update
     protected virtual void Start()
@@ -48,8 +57,8 @@ public abstract class Actor : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        var movementInput = MovementInput();
-        DetermineSpriteDirection(movementInput.x);
+        _movementInput = MovementInput();
+        DetermineSpriteDirection(_movementInput.x);
         
         // Shoot the gun if the actor is firing
         if (FireInput())
@@ -58,7 +67,7 @@ public abstract class Actor : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        
+        MoveRigidBody();
     }
 
     /// <summary>
@@ -82,6 +91,14 @@ public abstract class Actor : MonoBehaviour
             _spriteRenderer.flipX = rightOrLeft = false;
             firingPoint.localPosition = new Vector3(_firingPointOffset.x, _firingPointOffset.y, 0);
         }
+    }
+
+    private void MoveRigidBody()
+    {
+        // Move the player horizontally
+        // Preserve the actor's vertical velocity
+        // Use the RigidBody.velocity to move the player for movement similar to the original metal slug
+        _rb.velocity = new Vector2(movementSpeed * _movementInput.x, _rb.velocity.y);
     }
 
     protected abstract bool FireInput();

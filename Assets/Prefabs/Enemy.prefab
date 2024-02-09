@@ -178,8 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e71d3a3a9ba9b4b934b8902214c0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
+  movementSpeed: 6
+  jumpForce: 4
   _bulletsPerMinute: 90
   _bulletVelocity: 6
   bulletPrefab: {fileID: 3969109867601141775, guid: eeabf76ee7a070f4fb3091f5f8d2de72, type: 3}
   firingPoint: {fileID: 578877760291966898}
+  _health: 1
