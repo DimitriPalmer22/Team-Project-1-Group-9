@@ -30,6 +30,8 @@ public abstract class Actor : MonoBehaviour
     // the speed at which the bullet travels
     [SerializeField] protected float _bulletVelocity;
 
+    [SerializeField] protected int _bulletDamage;
+
     // Game object to use as bullets
     [SerializeField] protected GameObject bulletPrefab;
     
@@ -116,10 +118,10 @@ public abstract class Actor : MonoBehaviour
         var bulletScript = bulletObject.GetComponent<BulletScript>();
 
         // determine which direction vector the bullet is going to use
-        var bulletVelocity = (rightOrLeft) ? -_bulletVelocity : _bulletVelocity;
+        var bulletVelocity = rightOrLeft ? -_bulletVelocity : _bulletVelocity;
         
         // start moving the bullet
-        bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag);
+        bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag, _bulletDamage);
         
         // Start a coroutine to tick the gun's fire rate
         StartCoroutine(TickFireRate());

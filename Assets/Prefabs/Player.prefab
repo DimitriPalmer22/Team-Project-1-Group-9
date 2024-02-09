@@ -100,13 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74b6d7dd900f124bb59fc8de46eb4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 3
-  _bulletsPerMinute: 120
-  _bulletVelocity: 10
-  bulletPrefab: {fileID: 3212702969348104815, guid: 10247b486fa4c9e45a0d55c9e29873e7, type: 3}
-  firingPoint: {fileID: 2539115130748907927}
   movementSpeed: 8
   jumpForce: 4
+  _bulletsPerMinute: 120
+  _bulletVelocity: 10
+  _bulletDamage: 1
+  bulletPrefab: {fileID: 3212702969348104815, guid: 10247b486fa4c9e45a0d55c9e29873e7, type: 3}
+  firingPoint: {fileID: 2539115130748907927}
+  _health: 3
 --- !u!50 &1067764871109330723
 Rigidbody2D:
   serializedVersion: 4

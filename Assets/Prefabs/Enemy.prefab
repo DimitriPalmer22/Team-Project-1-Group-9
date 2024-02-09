@@ -182,6 +182,7 @@ MonoBehaviour:
   jumpForce: 4
   _bulletsPerMinute: 90
   _bulletVelocity: 6
+  _bulletDamage: 1
   bulletPrefab: {fileID: 3969109867601141775, guid: eeabf76ee7a070f4fb3091f5f8d2de72, type: 3}
   firingPoint: {fileID: 578877760291966898}
   _health: 1
