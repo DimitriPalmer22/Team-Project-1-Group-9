@@ -178,9 +178,6 @@ public abstract class Actor : MonoBehaviour
     /// </summary>
     private void Fire()
     {
-        // Stop the actor from being able to fire again
-        _canFire = false;
-        
         // create a new bullet and access its script
         var bulletObject = Instantiate(bulletPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
         var bulletScript = bulletObject.GetComponent<BulletScript>();
@@ -191,14 +188,25 @@ public abstract class Actor : MonoBehaviour
         // start moving the bullet
         bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag, _bulletDamage);
         
+        // Stop the actor from being able to fire again
         // Start a coroutine to tick the gun's fire rate
-        StartCoroutine(TickFireRate());
-        
+        ResetCanFire();
+
         // Emit the shooting particle system
         _shootingParticleSystem.Emit(100);
         
         // Play the shoot sound
         PlaySound(shootSound);
+    }
+
+    protected void ResetCanFire()
+    {
+        // Stop the actor from being able to fire again
+        _canFire = false;
+        
+        // Start a coroutine to tick the gun's fire rate
+        StartCoroutine(TickFireRate());
+
     }
     
     /// <summary>
