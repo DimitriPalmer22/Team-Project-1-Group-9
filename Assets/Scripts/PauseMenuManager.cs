@@ -1,12 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
     public static PauseMenuManager Instance { get; private set; }
 
     // Assign your pause menu UI canvas in the inspector.
-    [SerializeField] private GameObject pauseMenuUI; 
+    [SerializeField] private GameObject pauseMenuUI;
 
+    // Assign your pause menu.
+    [SerializeField] private GameObject pauseMenu;
+    
+    // Assign your options menu.
+    [SerializeField] private GameObject optionsMenu;
+    
+    // Assign your about menu.
+    [SerializeField] private GameObject aboutMenu;
+    
     // bool to keep track of if the game is paused
     private bool _isPaused;
 
@@ -15,6 +25,8 @@ public class PauseMenuManager : MonoBehaviour
         // Initialize the instance
         if (Instance == null)
             Instance = this;
+
+        pauseMenuUI.SetActive(false);
     }
 
     void Update()
@@ -42,6 +54,11 @@ public class PauseMenuManager : MonoBehaviour
 
     private void PauseGame()
     {
+        // Only show the pause menu when pausing
+        pauseMenu.SetActive(true);
+        aboutMenu.SetActive(false);
+        optionsMenu.SetActive(false);
+        
         // show the pause menu UI
         pauseMenuUI.SetActive(true);
         
@@ -49,6 +66,19 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 0f; 
         
         _isPaused = true;
+    }
+
+    public void GoToMainMenuFromPause()
+    {
+        // Reset the instance
+        if (Instance != null)
+        {
+            Instance.ResumeGame();
+            Instance = null;
+        }
+
+        // Load the main menu
+        SceneManager.LoadScene(0);
     }
 
     public static bool Paused => Instance != null && Instance._isPaused;
