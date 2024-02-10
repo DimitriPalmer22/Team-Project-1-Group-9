@@ -152,8 +152,8 @@ BoxCollider2D:
   m_Offset: {x: 0.050000012, y: 0.5266719}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.27, y: 0}
-    oldSize: {x: 3.125, y: 1.578125}
+    pivot: {x: 0.33, y: 0}
+    oldSize: {x: 2.546875, y: 1.578125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4908,8 +4908,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -541652945
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5065,6 +5065,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1067764871109330732}
     m_Modifications:
+    - target: {fileID: 676307586470916702, guid: dcb752d39ebcb17499620135faf621f2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1745477333510752276, guid: dcb752d39ebcb17499620135faf621f2, type: 3}
       propertyPath: m_Name
       value: Firing Point
