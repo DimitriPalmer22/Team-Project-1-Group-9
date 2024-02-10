@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,23 +6,36 @@ using UnityEngine.UI;
 
 public class ToggleFillCenter : MonoBehaviour
 {
-    private Image buttonImage;
+    private Image _buttonImage;
+    [SerializeField] private GameSettingType _gameSettingType;
 
     void Start()
     {
-        buttonImage = GetComponent<Image>();
+        _buttonImage = GetComponent<Image>();
     }
 
     public void ToggleFill()
     {
-        if (buttonImage != null)
+        if (_buttonImage != null)
         {
-            buttonImage.fillCenter = !buttonImage.fillCenter;
+            _buttonImage.fillCenter = !_buttonImage.fillCenter;
+
+            switch (_gameSettingType)
+            {
+                case GameSettingType.Hardcore:
+                    GameSettings.SetHardcore(_buttonImage.fillCenter);
+                    break;
+                case GameSettingType.InfiniteHealth:
+                    GameSettings.SetInfiniteHealth(_buttonImage.fillCenter);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
         }
+        
         else
-        {
             Debug.LogError("ToggleFillCenter: No Image component found");
-        }
     }
 
 }

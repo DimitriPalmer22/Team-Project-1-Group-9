@@ -19,3 +19,9 @@ N
 Assets/Scripts/GlobalScript.cs,5\1\51469e614e3f258ce097f5eb06c853a25ee2857a
 R
 "Assets/Scripts/PauseMenuManager.cs,7\9\7967f8b2497408aadc4db644df77988816b4b3e7
+€
+PLibrary/PackageCache/com.unity.2d.animation@7.0.13/Runtime/TransformAccessJob.cs,2\a\2a8587c066f24bb6f1f3a90142a7513546232d39
+N
+Assets/Scripts/GameSettings.cs,6\2\62e0d6aafc49643a7403d199d6c35683444e0d38
+R
+"Assets/Scripts/ToggleFillCenter.cs,b\f\bf532903e04e0337d7d66d6e31f73c05b3775084
