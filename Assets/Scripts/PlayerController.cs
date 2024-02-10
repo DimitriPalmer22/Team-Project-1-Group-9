@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -108,14 +109,17 @@ public class PlayerController : Actor
                 /* Test if the ground is below the player.
                  * If it is, then add it to the list of platforms the player is currently touching
                  */
+
+                _onGround = true;
                 
-                if (other.transform.position.y < transform.position.y)
+                
+                if (other.contacts[0].point.y < transform.position.y)
                     _collidingPlatforms.Add(other.gameObject);
                 
                 break;
         }
         
-        DetermineIfOnGround();
+        // DetermineIfOnGround();
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -126,10 +130,13 @@ public class PlayerController : Actor
             // If they did, remove that platform from the list of colliding platforms
             case "Ground":
                 _collidingPlatforms.Remove(other.gameObject);
+
+                _onGround = false;
+                
                 break;
         }
         
-        DetermineIfOnGround();
+        // DetermineIfOnGround();
     }
 
     /// <summary>
