@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : Actor
 {
-
-
     // boolean used to determine if the player is on the ground
     private bool _onGround;
 
@@ -19,21 +15,46 @@ public class PlayerController : Actor
     /// </summary>
     private readonly List<GameObject> _collidingPlatforms = new();
 
-    // Update is called once per frame
+    /// <summary>
+    /// The animator used to control the player's firing animation
+    /// </summary>
+    private Animator _animator;
+
+    /// <summary>
+    /// bool used to control the animator's current animation
+    /// </summary>
+    private bool _shootingThisFrame;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        // Get the animator
+        _animator = GetComponent<Animator>();
+    }
+
     protected override void Update()
     {
+        // Reset the test for shooting this frame
+        _shootingThisFrame = false;
+        
         base.Update();
         
-        FireInput();
+        // Determine the current animation
+        DetermineAnimation();
     }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
         
-        // Jump if the variable to jump this frame is true 
+        // Jump if the variable to jump this frame is true
+        // the input for the player to jump is inside update
+        // the method of actually jumping is in the fixed update due to using rigid body
         if (_jumpThisFrame)
         {
+            Jump();
+            
             // Jump using the rigid body
             _rb.velocity = new Vector2(_rb.velocity.x, 0);
             _rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
@@ -52,10 +73,8 @@ public class PlayerController : Actor
         // Get the left and right movement input (A & D or Left & Right)
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         
-        
-        /* Test if the player has pressed the jump button this frame.
-         * If they have, set the variable that tells the script to jump during this frame
-         */
+        // Test if the player has pressed the jump button this frame.
+        // If they have, set the variable that tells the script to jump during this frame
         bool jumpButtonPressed = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         if (jumpButtonPressed && _onGround)
             _jumpThisFrame = true;
@@ -74,6 +93,9 @@ public class PlayerController : Actor
         if (!_canFire)
             return false;
 
+        // Set the flag that determines if the player is shooting this frame
+        _shootingThisFrame = true;
+        
         return true;
     }
 
@@ -89,6 +111,7 @@ public class PlayerController : Actor
                 
                 if (other.transform.position.y < transform.position.y)
                     _collidingPlatforms.Add(other.gameObject);
+                
                 break;
         }
         
@@ -129,5 +152,17 @@ public class PlayerController : Actor
     protected override void Die()
     {
         // TODO: Die
+    }
+
+    /// <summary>
+    /// Determine which animation should currently be playing
+    /// </summary>
+    private void DetermineAnimation()
+    {
+        if (!_shootingThisFrame)
+            return;
+        
+        // Force the shooting animation to play / restart if a bullet is fired this frame
+        _animator.Play("Player Shooting Animation", -1, 0f);
     }
 }

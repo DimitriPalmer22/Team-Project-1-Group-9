@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -9,6 +6,7 @@ public class BulletScript : MonoBehaviour
     
     private Vector2 _velocity;
     private string _shooterTag;
+    private int _damage;
 
     private float _remainingDuration = Duration;
     
@@ -30,16 +28,17 @@ public class BulletScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Start the movement of the bullet after its instantiated
+    /// Start the movement of the bullet after its instantiated.
+    /// Also used to store variables within the BulletScript class.
     /// </summary>
     /// <param name="velocity">How fast the bullet moves</param>
     /// <param name="shooterTag">Tag of the person who shot the bullet</param>
-    public void MoveBullet(Vector2 velocity, string shooterTag)
+    /// <param name="damage">How much damage the bullet does</param>
+    public void MoveBullet(Vector2 velocity, string shooterTag, int damage)
     {
         _shooterTag = shooterTag;
-        
         _velocity = velocity;
-        Debug.Log($"SET VELOCITY TO: {velocity}");
+        _damage = damage;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,15 +51,19 @@ public class BulletScript : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                var enemyScript = other.GetComponent<EnemyScript>();
-                enemyScript.LoseHealth(1);
-                break;
             case "Player":
+                // Get the actor script of the player / enemy
+                var actorScript = other.GetComponent<Actor>();
+                
+                // take away health
+                actorScript.LoseHealth(_damage);
                 break;
+            
             case "Ground":
                 // destroy the bullet if it hits the tile map
                 Destroy(gameObject);
                 break;
+            
             default:
                 return;
         }

@@ -1,11 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Actor : MonoBehaviour
 {
 
+    #region Variables
+    
     // Unity components
     protected Rigidbody2D _rb;
     protected SpriteRenderer _spriteRenderer;
@@ -30,6 +30,8 @@ public abstract class Actor : MonoBehaviour
     // the speed at which the bullet travels
     [SerializeField] protected float _bulletVelocity;
 
+    [SerializeField] protected int _bulletDamage;
+
     // Game object to use as bullets
     [SerializeField] protected GameObject bulletPrefab;
     
@@ -40,8 +42,37 @@ public abstract class Actor : MonoBehaviour
     
     // a vector2 to determine how far away the 
     private Vector2 _firingPointOffset;
-    private bool rightOrLeft;
+    private bool _rightOrLeft;
     
+    // Particles variables
+    
+    // Variable for the particle system used when shooting
+    private ParticleSystem _shootingParticleSystem;
+
+    // Variable for the particle system used when jumping
+    private ParticleSystem _jumpingParticleSystem;
+    
+    // Audio Variables
+    
+    [Header("Audio")]
+
+    // Sound that plays when this actor takes damage
+    [SerializeField] private AudioClip hurtSound;
+    
+    // Sound that plays when this actor shoots
+    [SerializeField] private AudioClip shootSound;
+
+    // Sound that plays when this actor jumps
+    [SerializeField] private AudioClip jumpSound;
+
+    // Audio source that is responsible for playing hit and shoot sounds
+    private AudioSource _audioSource;
+
+    
+    #endregion Variables
+
+    #region Unity Event Methods
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -52,11 +83,21 @@ public abstract class Actor : MonoBehaviour
         // Save the offset of the firing point so that it flips when the player changes directions
         _firingPointOffset = firingPoint.localPosition;
         
+        // Get particle systems
+        _shootingParticleSystem = firingPoint.GetComponent<ParticleSystem>();
+        _jumpingParticleSystem = GetComponent<ParticleSystem>();
+        
+        // Get audio source
+        _audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (PauseMenuManager.Paused)
+            return;
+        
         _movementInput = MovementInput();
         DetermineSpriteDirection(_movementInput.x);
         
@@ -70,11 +111,19 @@ public abstract class Actor : MonoBehaviour
         MoveRigidBody();
     }
 
+    #endregion
+    
+    #region Movement Methods
+    
     /// <summary>
     /// Function that contains the movement & jump logic
     /// </summary>
     protected abstract Vector2 MovementInput();
 
+    /// <summary>
+    /// Flip the way the sprite is facing based on the actor's horizontal movement
+    /// </summary>
+    /// <param name="horizontalInput">The actor's horizontal movement input</param>
     private void DetermineSpriteDirection(float horizontalInput)
     {
         // Flip sprite depending on which direction the player is moving
@@ -82,14 +131,23 @@ public abstract class Actor : MonoBehaviour
         // Going left
         if (horizontalInput < 0)
         {
-            _spriteRenderer.flipX = rightOrLeft = true;
+            _spriteRenderer.flipX = _rightOrLeft = true;
             firingPoint.localPosition = new Vector3(-_firingPointOffset.x, _firingPointOffset.y, 0);
+            
+            // Flip the shooting particle emitter
+            var shape = _shootingParticleSystem.shape;
+            shape.rotation = new Vector3(shape.rotation.x, -90, shape.rotation.z);
         }
         // Going right
         else if (horizontalInput > 0)
         {
-            _spriteRenderer.flipX = rightOrLeft = false;
+            _spriteRenderer.flipX = _rightOrLeft = false;
             firingPoint.localPosition = new Vector3(_firingPointOffset.x, _firingPointOffset.y, 0);
+
+            // Flip the shooting particle emitter
+            var shape = _shootingParticleSystem.shape;
+            shape.rotation = new Vector3(shape.rotation.x, 90, shape.rotation.z);
+            
         }
     }
 
@@ -101,6 +159,19 @@ public abstract class Actor : MonoBehaviour
         _rb.velocity = new Vector2(movementSpeed * _movementInput.x, _rb.velocity.y);
     }
 
+    protected void Jump()
+    {
+        // Emit the shooting particle system
+        _jumpingParticleSystem.Emit(100);
+        
+        // Play the jump sound
+        PlaySound(jumpSound);
+    }
+    
+    #endregion
+    
+    #region Shooting and Combat Methods
+
     protected abstract bool FireInput();
 
     /// <summary>
@@ -108,21 +179,35 @@ public abstract class Actor : MonoBehaviour
     /// </summary>
     private void Fire()
     {
-        // Stop the actor from being able to fire again
-        _canFire = false;
-        
         // create a new bullet and access its script
         var bulletObject = Instantiate(bulletPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
         var bulletScript = bulletObject.GetComponent<BulletScript>();
 
         // determine which direction vector the bullet is going to use
-        var bulletVelocity = (rightOrLeft) ? -_bulletVelocity : _bulletVelocity;
+        var bulletVelocity = _rightOrLeft ? -_bulletVelocity : _bulletVelocity;
         
         // start moving the bullet
-        bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag);
+        bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag, _bulletDamage);
+        
+        // Stop the actor from being able to fire again
+        // Start a coroutine to tick the gun's fire rate
+        ResetCanFire();
+
+        // Emit the shooting particle system
+        _shootingParticleSystem.Emit(100);
+        
+        // Play the shoot sound
+        PlaySound(shootSound);
+    }
+
+    protected void ResetCanFire()
+    {
+        // Stop the actor from being able to fire again
+        _canFire = false;
         
         // Start a coroutine to tick the gun's fire rate
         StartCoroutine(TickFireRate());
+
     }
     
     /// <summary>
@@ -152,8 +237,27 @@ public abstract class Actor : MonoBehaviour
         // Lose health
         _health -= amount;
         
+        // Play the hurt sound
+        PlaySound(hurtSound);
+        
         // Die if health is too low
         if (_health <= 0)
             Die();
     }
+    
+    #endregion
+    
+    private void PlaySound(AudioClip clip)
+    {
+        // skip this function if the clip is null
+        if (clip == null)
+            return;
+        
+        // Swap the clip
+        _audioSource.clip = clip;
+        
+        // Play the clip
+        _audioSource.Play();
+    }
+    
 }
