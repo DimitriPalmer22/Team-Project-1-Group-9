@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : Actor
@@ -14,6 +15,35 @@ public class PlayerController : Actor
     /// Used strictly to set the value of the _onGround variable.
     /// </summary>
     private readonly List<GameObject> _collidingPlatforms = new();
+
+    /// <summary>
+    /// The animator used to control the player's firing animation
+    /// </summary>
+    private Animator _animator;
+
+    /// <summary>
+    /// bool used to control the animator's current animation
+    /// </summary>
+    private bool _shootingThisFrame;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        // Get the animator
+        _animator = GetComponent<Animator>();
+    }
+
+    protected override void Update()
+    {
+        // Reset the test for shooting this frame
+        _shootingThisFrame = false;
+        
+        base.Update();
+        
+        // Determine the current animation
+        DetermineAnimation();
+    }
 
     protected override void FixedUpdate()
     {
@@ -64,6 +94,9 @@ public class PlayerController : Actor
         if (!_canFire)
             return false;
 
+        // Set the flag that determines if the player is shooting this frame
+        _shootingThisFrame = true;
+        
         return true;
     }
 
@@ -120,5 +153,17 @@ public class PlayerController : Actor
     protected override void Die()
     {
         // TODO: Die
+    }
+
+    /// <summary>
+    /// Determine which animation should currently be playing
+    /// </summary>
+    private void DetermineAnimation()
+    {
+        if (!_shootingThisFrame)
+            return;
+        
+        // Force the shooting animation to play / restart if a bullet is fired this frame
+        _animator.Play("Player Shooting Animation", -1, 0f);
     }
 }
