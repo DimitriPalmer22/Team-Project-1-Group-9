@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da27fbbdb5075ab429c235fed07c2cc6
+guid: 0a250ecee230dfd40a262b2fbf5e9d4b
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638431713626442208
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: tank_bullet
+  - name: enemybullet
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 78
       height: 78
-    spriteID: a2c428a11a303274092508cce62f7404
+    spriteID: feace94117e2b224582a346cf31de3b1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,23 +142,78 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1219263309
-    name: tank_bullet
+    guid: 753716650
+    name: enemybullet
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: tank_bullet
+    - name: enemybullet
       frameIndex: 0
       cellRect:
         x: 25
         y: 25
         width: 78
         height: 78
-      spriteId: a2c428a11a303274092508cce62f7404
+      spriteId: feace94117e2b224582a346cf31de3b1
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Windows Store Apps
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
