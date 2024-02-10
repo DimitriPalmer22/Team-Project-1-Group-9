@@ -3,12 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame ()
+    public void PlayGame()
     {
         // Load the gameplay scene
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Assets Made");
     }
-    public void QuitGame ()
+
+    public void QuitGame()
     {
         Application.Quit();
     }
