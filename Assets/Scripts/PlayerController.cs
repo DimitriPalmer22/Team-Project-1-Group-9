@@ -15,14 +15,6 @@ public class PlayerController : Actor
     /// </summary>
     private readonly List<GameObject> _collidingPlatforms = new();
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-        
-        FireInput();
-    }
-
     protected override void FixedUpdate()
     {
         base.FixedUpdate();

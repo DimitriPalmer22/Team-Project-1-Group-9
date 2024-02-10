@@ -95,6 +95,9 @@ public abstract class Actor : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (PauseMenuManager.Paused)
+            return;
+        
         _movementInput = MovementInput();
         DetermineSpriteDirection(_movementInput.x);
         

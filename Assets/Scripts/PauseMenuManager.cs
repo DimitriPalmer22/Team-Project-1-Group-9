@@ -1,39 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class PauseMenuManager : MonoBehaviour
 {
-    public GameObject pauseMenuUI; // Assign your pause menu UI canvas in the inspector.
+    public static PauseMenuManager Instance { get; private set; }
 
-    private bool isPaused = false;
+    // Assign your pause menu UI canvas in the inspector.
+    [SerializeField] private GameObject pauseMenuUI; 
+
+    // bool to keep track of if the game is paused
+    private bool _isPaused;
+
+    private void Start()
+    {
+        // Initialize the instance
+        if (Instance == null)
+            Instance = this;
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
+            if (_isPaused)
                 ResumeGame();
-            }
+
             else
-            {
                 PauseGame();
-            }
         }
     }
 
-    public void ResumeGame()
+    private void ResumeGame()
     {
+        // hide the pause menu UI
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; // Resume the game time.
-        isPaused = false;
+        
+        // Resume the game time.
+        Time.timeScale = 1f; 
+        
+        _isPaused = false;
     }
 
-    public void PauseGame()
+    private void PauseGame()
     {
+        // show the pause menu UI
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f; // Freeze the game time.
-        isPaused = true;
+        
+        // Freeze the game time.
+        Time.timeScale = 0f; 
+        
+        _isPaused = true;
     }
+
+    public static bool Paused => Instance != null && Instance._isPaused;
 }

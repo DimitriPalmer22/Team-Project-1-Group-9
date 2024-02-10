@@ -17,3 +17,5 @@ J
 Assets/Scripts/MainMenu.cs,0\0\00be338ff5b861e87ad4608d74b1358c856e0403
 N
 Assets/Scripts/GlobalScript.cs,5\1\51469e614e3f258ce097f5eb06c853a25ee2857a
+R
+"Assets/Scripts/PauseMenuManager.cs,7\9\7967f8b2497408aadc4db644df77988816b4b3e7
