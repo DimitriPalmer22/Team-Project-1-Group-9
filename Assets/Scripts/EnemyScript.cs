@@ -11,6 +11,8 @@ public class EnemyScript : Actor
     // used to test if the enemy is being rendered by the camera
     private bool _onScreen;
 
+    [SerializeField] private int scoreValue;
+
     protected override void Start()
     {
         base.Start();
@@ -77,6 +79,8 @@ public class EnemyScript : Actor
 
     protected override void Die()
     {
+        GlobalScript.Instance.AddScore(scoreValue);
+        
         Destroy(gameObject);
     }
 
