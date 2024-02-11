@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : Actor
@@ -26,6 +27,8 @@ public class PlayerController : Actor
     /// </summary>
     private bool _shootingThisFrame;
 
+    [SerializeField] private TMP_Text healthText;
+
     protected override void Start()
     {
         base.Start();
@@ -46,6 +49,9 @@ public class PlayerController : Actor
         
         // Determine the current animation
         DetermineAnimation();
+        
+        // Update Health Text
+        UpdateHealthText();
     }
 
     protected override void FixedUpdate()
@@ -199,4 +205,22 @@ public class PlayerController : Actor
         // Force the shooting animation to play / restart if a bullet is fired this frame
         _animator.Play("Player Shooting Animation", -1, 0f);
     }
+    
+    private void UpdateHealthText()
+    {
+        if (GameSettings.IsHardcore)
+        {
+            healthText.text = "HARDCORE";
+            return;
+        }
+
+        if (GameSettings.IsInfiniteHealth)
+        {
+            healthText.text = "Health : INFINITE";
+            return;
+        }
+
+        healthText.text = $"Health : {Health}";
+    }
+    
 }
