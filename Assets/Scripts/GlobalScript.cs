@@ -10,6 +10,7 @@ public class GlobalScript : MonoBehaviour
     [SerializeField] public WinLossManager winLossManager;
 
     [SerializeField] private AudioClip gameplayMusic;
+    [SerializeField] private AudioClip pauseMusic;
     [SerializeField] private AudioClip winMusic;
     [SerializeField] private AudioClip loseMusic;
 
@@ -40,5 +41,8 @@ public class GlobalScript : MonoBehaviour
 
     public void PlayWinMusic() => PlayMusic(winMusic);
     public void PlayLoseMusic() => PlayMusic(loseMusic);
+
+    public void PlayGameplayMusic() => PlayMusic(gameplayMusic);
+    public void PlayPauseMusic() => PlayMusic(pauseMusic);
 
 }

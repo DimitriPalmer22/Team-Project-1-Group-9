@@ -79,4 +79,7 @@ public class WinLossManager : MonoBehaviour
         // Close game
         Application.Quit();
     }
+
+    public bool GameOver => winScreen.activeSelf || lossScreen.activeSelf;
+
 }

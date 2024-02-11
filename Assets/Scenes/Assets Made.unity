@@ -19484,8 +19484,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winLossManager: {fileID: 1584586151}
   gameplayMusic: {fileID: 8300000, guid: 636c19b463a7bc44298ea8930d07b5db, type: 3}
-  winMusic: {fileID: 8300000, guid: 636c19b463a7bc44298ea8930d07b5db, type: 3}
-  loseMusic: {fileID: 8300000, guid: 636c19b463a7bc44298ea8930d07b5db, type: 3}
+  pauseMusic: {fileID: 8300000, guid: de42af01e5405514d99ae4c74c97b4fb, type: 3}
+  winMusic: {fileID: 8300000, guid: de42af01e5405514d99ae4c74c97b4fb, type: 3}
+  loseMusic: {fileID: 8300000, guid: de42af01e5405514d99ae4c74c97b4fb, type: 3}
 --- !u!4 &1255847892
 Transform:
   m_ObjectHideFlags: 0
