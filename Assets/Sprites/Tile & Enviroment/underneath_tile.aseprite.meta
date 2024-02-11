@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8c4592c491e15f46abb71d8a99c22b3
+guid: 932d1cd281501c44b939402c6209f3ee
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638431800149049620
+  platformSettingsDirtyTick: 638431819989385844
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: roadtile
+  - name: underneath_tile
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -129,8 +129,8 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 128
-      height: 64
-    spriteID: d54e02f9cacbc4244afd51420a0fe03b
+      height: 128
+    spriteID: c8078a678ef64e24fb5c425a084ff56e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,7 +140,167 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: roadtile_0
+  - name: underneath_tile_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 100
+      width: 32
+      height: 32
+    spriteID: aa3dc782612c81b449b732d3a1941a67
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 100
+      width: 32
+      height: 32
+    spriteID: 281323531f4c15d47bd3e63269669cfa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 100
+      width: 32
+      height: 32
+    spriteID: c5f99a7ff64cd6144a3e99dfc22fd695
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 100
+      width: 32
+      height: 32
+    spriteID: a300b0e982ee91e45a0510b5460543a7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 68
+      width: 32
+      height: 32
+    spriteID: 24cad3495813edb488385f5689cd4b9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 36
+      y: 68
+      width: 32
+      height: 32
+    spriteID: 7c117a115c565794c813c78adfcccb37
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 68
+      width: 32
+      height: 32
+    spriteID: 0595d2f8076987b4c8b315e610964dfd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 100
+      y: 68
+      width: 32
+      height: 32
+    spriteID: 5d52a7eb6f1ab094a8adafc4e86318e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: underneath_tile_8
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -151,7 +311,7 @@ ScriptedImporter:
       y: 36
       width: 32
       height: 32
-    spriteID: ed1617ec5a20a2f4da89fbeb14e54335
+    spriteID: 237329852dfca8c469b6dbc23c848186
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +320,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_1
+  - name: underneath_tile_9
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -171,7 +331,7 @@ ScriptedImporter:
       y: 36
       width: 32
       height: 32
-    spriteID: e339f6878de539446a1661db14545c17
+    spriteID: 69ab953f6facab544a1be9ddeda9a209
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -180,7 +340,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_2
+  - name: underneath_tile_10
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -191,7 +351,7 @@ ScriptedImporter:
       y: 36
       width: 32
       height: 32
-    spriteID: 4efb7e48f37b2e9428f9e1f07c68fc77
+    spriteID: bbe8c1f661e08e149bdacdc41d5cf897
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -200,7 +360,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_3
+  - name: underneath_tile_11
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -211,7 +371,7 @@ ScriptedImporter:
       y: 36
       width: 32
       height: 32
-    spriteID: 572f6578773648b4c87a2baeaae32434
+    spriteID: bd7fa7b0fdaffa94c93f3f7063195f17
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -220,7 +380,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_4
+  - name: underneath_tile_12
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -231,7 +391,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 32
-    spriteID: aaa915330b71d4a45ab2522935a1c3aa
+    spriteID: 976bdf1cf6ec15d4480ad5fa9b1ffd60
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -240,7 +400,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_5
+  - name: underneath_tile_13
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -251,7 +411,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 32
-    spriteID: 888ff78be910ffb44ad8cd8d20ce8afc
+    spriteID: 1082b698b406c304782826db71de9f9f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -260,7 +420,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_6
+  - name: underneath_tile_14
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -271,7 +431,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 32
-    spriteID: 3cb7ed12a9007e5428f7d82849f06da4
+    spriteID: 2dc95118f377d374c9486ef460db1b77
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -280,7 +440,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_7
+  - name: underneath_tile_15
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -291,7 +451,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 32
-    spriteID: 6862232b1bd66d6498653e0c4d263a76
+    spriteID: ce19e6a22e3e4ac4dbfe4f8faf998e36
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -302,20 +462,20 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -1766463880
-    name: roadtile
+    guid: -2029510459
+    name: underneath_tile
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: roadtile
+    - name: underneath_tile
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 128
-        height: 64
-      spriteId: d54e02f9cacbc4244afd51420a0fe03b
+        height: 128
+      spriteId: c8078a678ef64e24fb5c425a084ff56e
     linkedCells: []
     parentIndex: -1
   platformSettings:

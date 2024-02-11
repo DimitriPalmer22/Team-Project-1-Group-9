@@ -33,7 +33,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 32
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638431744165312982
+  platformSettingsDirtyTick: 638431922707971697
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -142,13 +142,13 @@ ScriptedImporter:
   spriteSheetImportData:
   - name: underneath_tile_0
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 100
+      y: 122
       width: 32
       height: 32
     spriteID: 76a65f33c26a45e489f1e900dd4041df
@@ -162,13 +162,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_1
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 36
-      y: 100
+      y: 122
       width: 32
       height: 32
     spriteID: 41623a9ef28dcc2439dc56930df4285e
@@ -182,13 +182,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_2
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 68
-      y: 100
+      y: 122
       width: 32
       height: 32
     spriteID: 275f90403e79d684098ac80f60bf8e05
@@ -202,13 +202,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_3
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 100
-      y: 100
+      y: 122
       width: 32
       height: 32
     spriteID: 2673d1fa48a927f4b8498b5949cf1a60
@@ -222,13 +222,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_4
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 68
+      y: 90
       width: 32
       height: 32
     spriteID: d5d208ad1f8ef944b95d05e221e4c409
@@ -242,13 +242,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_5
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 36
-      y: 68
+      y: 90
       width: 32
       height: 32
     spriteID: 36aa51a4dbe4b8d419e46ac53f3860c5
@@ -262,13 +262,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_6
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 68
-      y: 68
+      y: 90
       width: 32
       height: 32
     spriteID: 10e15ea88af281347a0a830ff5096ffb
@@ -282,13 +282,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_7
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 100
-      y: 68
+      y: 90
       width: 32
       height: 32
     spriteID: e935c51cbf25fc344b4976c8b505227f
@@ -302,13 +302,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_8
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 36
+      y: 58
       width: 32
       height: 32
     spriteID: 4d039c319eca71247bb36a89838f2391
@@ -322,13 +322,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_9
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 36
-      y: 36
+      y: 58
       width: 32
       height: 32
     spriteID: 28f99c52255a60b4c823fc7f6dbdb1b2
@@ -342,13 +342,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_10
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 68
-      y: 36
+      y: 58
       width: 32
       height: 32
     spriteID: 6d1bfcf7439be3d4b8efdf71112393b0
@@ -362,13 +362,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_11
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 100
-      y: 36
+      y: 58
       width: 32
       height: 32
     spriteID: 04d2b2a4c6e08694682c54b7536e7903
@@ -382,13 +382,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_12
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 26
       width: 32
       height: 32
     spriteID: 5efb48b7e36e0f247b5e4e05a5e60c68
@@ -402,13 +402,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_13
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 36
-      y: 4
+      y: 26
       width: 32
       height: 32
     spriteID: ef4f2e8c375d23d4493d4d1dd27818e7
@@ -422,13 +422,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_14
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 68
-      y: 4
+      y: 26
       width: 32
       height: 32
     spriteID: 2aeefe03003de68469ea52bb19239f8a
@@ -442,13 +442,13 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: underneath_tile_15
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 100
-      y: 4
+      y: 26
       width: 32
       height: 32
     spriteID: 95e2201ecb850b643b0b5393d9c7ac32
@@ -462,20 +462,20 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -2029510459
-    name: underneath_tile
+    guid: -741791554
+    name: underneath_tile_Platforms
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: underneath_tile
+    - name: underneath_tile_Platforms
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 128
         height: 128
-      spriteId: 559d1a98eb2b37f45a2a03e98f26f2d5
+      spriteId: 7c42653a5d2fe694cb38a4e7a4b0ca9e
     linkedCells: []
     parentIndex: -1
   platformSettings:

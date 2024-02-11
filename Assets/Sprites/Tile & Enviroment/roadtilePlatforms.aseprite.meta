@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d8c4592c491e15f46abb71d8a99c22b3
+guid: 37e630f6d51498e40abebe7f1f4f60cd
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638431800149049620
+  platformSettingsDirtyTick: 638431827414730312
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 128
       height: 64
-    spriteID: d54e02f9cacbc4244afd51420a0fe03b
+    spriteID: f1f38bda4643a9d43b91869f733717da
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,7 +140,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: roadtile_0
+  - name: roadtilePlatforms_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -148,10 +148,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 36
+      y: 58
       width: 32
       height: 32
-    spriteID: ed1617ec5a20a2f4da89fbeb14e54335
+    spriteID: 0cf04a43487661f4fb6ba598d591acd7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,7 +160,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_1
+  - name: roadtilePlatforms_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -168,10 +168,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 36
-      y: 36
+      y: 58
       width: 32
       height: 32
-    spriteID: e339f6878de539446a1661db14545c17
+    spriteID: 4bd7ff82fe751ba4f94a65ee44a8d86f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -180,7 +180,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_2
+  - name: roadtilePlatforms_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -188,10 +188,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 68
-      y: 36
+      y: 58
       width: 32
       height: 32
-    spriteID: 4efb7e48f37b2e9428f9e1f07c68fc77
+    spriteID: 5840c5e3c5409c747a8ea5ab31c6ccfc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -200,7 +200,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_3
+  - name: roadtilePlatforms_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -208,10 +208,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 100
-      y: 36
+      y: 58
       width: 32
       height: 32
-    spriteID: 572f6578773648b4c87a2baeaae32434
+    spriteID: 86a531dcecb9b56428793f3d1e2570ba
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -220,7 +220,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_4
+  - name: roadtilePlatforms_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -228,10 +228,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 26
       width: 32
       height: 32
-    spriteID: aaa915330b71d4a45ab2522935a1c3aa
+    spriteID: 1aaa181a6f1a7ec42b3f3b550064bbc7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -240,7 +240,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_5
+  - name: roadtilePlatforms_5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -248,10 +248,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 36
-      y: 4
+      y: 26
       width: 32
       height: 32
-    spriteID: 888ff78be910ffb44ad8cd8d20ce8afc
+    spriteID: 784eae1ad729cfe49ae1ad39f48bc99c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -260,7 +260,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_6
+  - name: roadtilePlatforms_6
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -268,10 +268,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 68
-      y: 4
+      y: 26
       width: 32
       height: 32
-    spriteID: 3cb7ed12a9007e5428f7d82849f06da4
+    spriteID: 75d46075fdcd2fc45896f0879d9a302f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -280,7 +280,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: roadtile_7
+  - name: roadtilePlatforms_7
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -288,10 +288,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 100
-      y: 4
+      y: 26
       width: 32
       height: 32
-    spriteID: 6862232b1bd66d6498653e0c4d263a76
+    spriteID: c5f62841b24f90d48bed1101907142c6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -302,20 +302,20 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -1766463880
-    name: roadtile
+    guid: 1635810576
+    name: roadtilePlatforms
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: roadtile
+    - name: roadtilePlatforms
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 128
         height: 64
-      spriteId: d54e02f9cacbc4244afd51420a0fe03b
+      spriteId: a41043bdc2b4b7c4ba64d992ce0ed834
     linkedCells: []
     parentIndex: -1
   platformSettings:
