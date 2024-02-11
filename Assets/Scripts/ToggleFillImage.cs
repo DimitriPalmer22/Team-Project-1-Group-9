@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleFillCenter : MonoBehaviour
+public class ToggleFillImage : MonoBehaviour
 {
     private Image buttonImage;
 
