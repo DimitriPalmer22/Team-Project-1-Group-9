@@ -1,3 +1,5 @@
 
 Gcsharpsquid:S3903"+Move 'GlobalScript' into a named namespace.(Ìİ¥G
-¢csharpsquid:S1186"yAdd a nested comment explaining why this method is empty, throw a 'NotSupportedException' or complete the implementation.(®±®“üÿÿÿÿ8ùå¤ˆÙ1
+mcsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(Ûî»ùÿÿÿÿ8ªÓ›²Ù1
+~csharpsquid:S2696"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(²Ñûèÿÿÿÿÿ8ÀİÚ¯Ù1

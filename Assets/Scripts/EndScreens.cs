@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class EndScreens : MonoBehaviour
 {
-    public void PlayGame()
+    public void ReturnToMenu ()
     {
         // Load the gameplay scene
-        SceneManager.LoadScene("Assets Made");
+        SceneManager.LoadScene(0);
     }
-
-    public void QuitGame()
+    public void ExitGame ()
     {
         Application.Quit();
     }

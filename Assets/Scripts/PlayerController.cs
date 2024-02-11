@@ -32,6 +32,9 @@ public class PlayerController : Actor
 
         // Get the animator
         _animator = GetComponent<Animator>();
+
+        // Let the actor script know that this is a player
+        _isPlayer = true;
     }
 
     protected override void Update()
@@ -110,7 +113,8 @@ public class PlayerController : Actor
                  * If it is, then add it to the list of platforms the player is currently touching
                  */
 
-                _onGround = true;
+                // if (_rb.velocity.y == 0)
+                //     _onGround = true;
                 
                 
                 if (other.contacts[0].point.y < transform.position.y)
@@ -120,6 +124,29 @@ public class PlayerController : Actor
         }
         
         // DetermineIfOnGround();
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        
+        switch (other.gameObject.tag)
+        {
+            // Test if the player is currently touching a ground game object
+            case "Ground":
+                /* Test if the ground is below the player.
+                 * If it is, then add it to the list of platforms the player is currently touching
+                 */
+
+                if (MathF.Abs(_rb.velocity.y) < 0.025f)
+                    _onGround = true;
+                
+                
+                // if (other.contacts[0].point.y < transform.position.y)
+                //     _collidingPlatforms.Add(other.gameObject);
+                
+                break;
+        }
+        
     }
 
     private void OnCollisionExit2D(Collision2D other)

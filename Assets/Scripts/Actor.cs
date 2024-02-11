@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Actor : MonoBehaviour
 {
 
     #region Variables
+
+    protected bool _isPlayer;
     
     // Unity components
     protected Rigidbody2D _rb;
@@ -40,14 +44,17 @@ public abstract class Actor : MonoBehaviour
     
     [SerializeField] private int _health;
     
+    // Determine which firing vector to use
+    [FormerlySerializedAs("_shooting")] [SerializeField] private ShootingDirection _shootingDirection;
+    
     // a vector2 to determine how far away the 
-    private Vector2 _firingPointOffset;
-    private bool _rightOrLeft;
+    protected Vector2 _firingPointOffset;
+    protected bool _rightOrLeft;
     
     // Particles variables
     
     // Variable for the particle system used when shooting
-    private ParticleSystem _shootingParticleSystem;
+    protected ParticleSystem _shootingParticleSystem;
 
     // Variable for the particle system used when jumping
     private ParticleSystem _jumpingParticleSystem;
@@ -118,6 +125,7 @@ public abstract class Actor : MonoBehaviour
     /// <summary>
     /// Function that contains the movement & jump logic
     /// </summary>
+    /// <returns></returns>
     protected abstract Vector2 MovementInput();
 
     /// <summary>
@@ -183,11 +191,8 @@ public abstract class Actor : MonoBehaviour
         var bulletObject = Instantiate(bulletPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
         var bulletScript = bulletObject.GetComponent<BulletScript>();
 
-        // determine which direction vector the bullet is going to use
-        var bulletVelocity = _rightOrLeft ? -_bulletVelocity : _bulletVelocity;
-        
         // start moving the bullet
-        bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag, _bulletDamage);
+        bulletScript.MoveBullet(GetFiringDirection().normalized * _bulletVelocity, tag, _bulletDamage);
         
         // Stop the actor from being able to fire again
         // Start a coroutine to tick the gun's fire rate
@@ -208,6 +213,30 @@ public abstract class Actor : MonoBehaviour
         // Start a coroutine to tick the gun's fire rate
         StartCoroutine(TickFireRate());
 
+    }
+
+    private Vector2 GetFiringDirection()
+    {
+        Vector2 shootingVector;
+        
+        switch (_shootingDirection)
+        {
+            case ShootingDirection.Normal:
+                shootingVector = new Vector2(1, 0);
+                break;
+            case ShootingDirection.Artillery:
+                shootingVector = new Vector2(1, 1);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
+        // determine which direction vector the bullet is going to use
+        // Going left
+        if (_rightOrLeft)
+            shootingVector = new Vector2(-shootingVector.x, shootingVector.y);
+        
+        return shootingVector;
     }
     
     /// <summary>
@@ -234,13 +263,23 @@ public abstract class Actor : MonoBehaviour
     /// <param name="amount"></param>
     public void LoseHealth(int amount)
     {
+        Debug.Log($"IS PLAYER?: {_isPlayer} {GameSettings.IsHardcore} {GameSettings.IsInfiniteHealth}");
+        
+        // Don't lose health if this is the player and there is infinite health
+        if (GameSettings.IsInfiniteHealth && _isPlayer)
+            return;
+        
         // Lose health
         _health -= amount;
+
+        // If hardcore, die
+        if (GameSettings.IsHardcore && _isPlayer)
+            _health = 0;
         
         // Play the hurt sound
         PlaySound(hurtSound);
         
-        // Die if health is too low
+        // Die if health is too low 
         if (_health <= 0)
             Die();
     }
@@ -259,5 +298,13 @@ public abstract class Actor : MonoBehaviour
         // Play the clip
         _audioSource.Play();
     }
-    
+
+    public bool IsAlive => _health > 0;
+
+}
+
+public enum ShootingDirection
+{
+    Normal, 
+    Artillery
 }

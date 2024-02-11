@@ -422,7 +422,7 @@ RectTransform:
   m_GameObject: {fileID: 76148581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.74999994, y: 0.74999994, z: 0.74999994}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1076564555}
@@ -923,6 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5e8b331456b6f44931ba5358621c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winLossManager: {fileID: 0}
 --- !u!4 &212135613
 Transform:
   m_ObjectHideFlags: 0
@@ -2341,7 +2342,7 @@ RectTransform:
   m_GameObject: {fileID: 1052724009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.74999994, y: 0.74999994, z: 0.74999994}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 96056523}
@@ -3654,7 +3655,7 @@ GameObject:
   - component: {fileID: 2014770909}
   - component: {fileID: 2014770908}
   m_Layer: 5
-  m_Name: METAL SLUG
+  m_Name: METAL SHELL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3700,7 +3701,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "METAL SLUG \nREMIX\n"
+  m_text: 'METAL SHELL
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b1b8b30873979e459ca499ff021c86a, type: 2}
   m_sharedMaterial: {fileID: 5251555863637883368, guid: 6b1b8b30873979e459ca499ff021c86a, type: 2}
@@ -3727,7 +3730,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.3
+  m_fontSize: 61.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4357,7 +4360,7 @@ RectTransform:
   m_GameObject: {fileID: 2113629404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.74999994, y: 0.74999994, z: 0.74999994}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2014770907}

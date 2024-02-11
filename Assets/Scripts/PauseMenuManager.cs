@@ -78,7 +78,9 @@ public class PauseMenuManager : MonoBehaviour
         }
 
         // Load the main menu
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MAINMENU");
+
+        ResumeGame();
     }
 
     public static bool Paused => Instance != null && Instance._isPaused;

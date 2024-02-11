@@ -25,3 +25,9 @@ N
 Assets/Scripts/GameSettings.cs,6\2\62e0d6aafc49643a7403d199d6c35683444e0d38
 R
 "Assets/Scripts/ToggleFillCenter.cs,b\f\bf532903e04e0337d7d66d6e31f73c05b3775084
+W
+'Assets/Scripts/ArtilleryBulletScript.cs,6\f\6f653987abc9f4a35ff5394c51d1377691604e24
+P
+ Assets/Scripts/WinLossManager.cs,2\c\2c97e8953a150e80ed701a100cf91005705ea2f8
+Q
+!Assets/Scripts/ToggleFillImage.cs,0\9\096ac760823c07848abb52e72aa6750901684cc3

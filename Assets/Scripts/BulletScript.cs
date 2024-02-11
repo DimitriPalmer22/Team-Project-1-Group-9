@@ -4,20 +4,14 @@ public class BulletScript : MonoBehaviour
 {
     private const float Duration = 5;
     
-    private Vector2 _velocity;
-    private string _shooterTag;
-    private int _damage;
+    protected  Vector2 _velocity;
+    protected  string _shooterTag;
+    protected int _damage;
 
-    private float _remainingDuration = Duration;
+    protected float _remainingDuration = Duration;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         // if the bullet lives for too long, destroy it
         _remainingDuration -= Time.deltaTime;
@@ -34,7 +28,7 @@ public class BulletScript : MonoBehaviour
     /// <param name="velocity">How fast the bullet moves</param>
     /// <param name="shooterTag">Tag of the person who shot the bullet</param>
     /// <param name="damage">How much damage the bullet does</param>
-    public void MoveBullet(Vector2 velocity, string shooterTag, int damage)
+    public virtual void MoveBullet(Vector2 velocity, string shooterTag, int damage)
     {
         _shooterTag = shooterTag;
         _velocity = velocity;
@@ -46,6 +40,8 @@ public class BulletScript : MonoBehaviour
         // skip the function if friendly fire
         if (other.gameObject.CompareTag(_shooterTag))
             return;
+
+        // Debug.Log($"TAGS: _{other.gameObject.tag} ({other.gameObject}) _{_shooterTag}");
         
         // skip this function if the bullet collides with something other than a player or enemy
         switch (other.gameObject.tag)

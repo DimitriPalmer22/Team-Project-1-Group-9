@@ -3,19 +3,21 @@ using UnityEngine;
 public class GlobalScript : MonoBehaviour
 {
     public static GlobalScript Instance { get; private set; }
-    
 
+    private static GameObject _player;
+    public static GameObject Player => _player;
+
+    [SerializeField] public WinLossManager winLossManager;
+    
     // Start is called before the first frame update
     void Start()
     {
         // Initialize the instance
         Instance = this;
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        _player = GameObject.FindWithTag("Player");
+
+        Time.timeScale = 1;
         
     }
 
