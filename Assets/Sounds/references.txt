@@ -6,6 +6,10 @@ https://opengameart.org/content/light-machine-gun
 
 https://opengameart.org/content/synthesized-explosion
 
-https://opengameart.org/content/fun-background
+-- https://opengameart.org/content/fun-background
 
 https://opengameart.org/content/background-music-heatstroke
+
+https://opengameart.org/content/victory-victory-victory
+
+https://opengameart.org/content/icy-game-over
