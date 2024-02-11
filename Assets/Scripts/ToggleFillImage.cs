@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToggleFillCenter : MonoBehaviour
+public class ToggleFillImage : MonoBehaviour
 {
     private Image _buttonImage;
     [SerializeField] private GameSettingType _gameSettingType;
