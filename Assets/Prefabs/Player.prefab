@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1067764871109330732}
   - component: {fileID: 1067764871109330733}
   - component: {fileID: 1067764871109330734}
+  - component: {fileID: 309227041567622243}
   - component: {fileID: 1067764871109330723}
   - component: {fileID: 1067764871109330722}
   - component: {fileID: 1597100140493971928}
@@ -112,9 +113,25 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3212702969348104815, guid: 10247b486fa4c9e45a0d55c9e29873e7, type: 3}
   firingPoint: {fileID: 2539115130748907927}
   _health: 3
+  _shootingDirection: 0
   hurtSound: {fileID: 8300000, guid: 5cb93c6918f1edb4dbb2c0bb45edd64b, type: 3}
   shootSound: {fileID: 8300000, guid: 6109fcb1366ac474dbbd54667397a600, type: 3}
   jumpSound: {fileID: 8300000, guid: e4c8bb2aa41130e4d8105b529e7c50dc, type: 3}
+  healthText: {fileID: 0}
+--- !u!114 &309227041567622243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067764871109330735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31429dbb592eaec4a94fc96d49089fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasSpeedPowerup: 0
+  hasRateOfFirePowerup: 0
 --- !u!50 &1067764871109330723
 Rigidbody2D:
   serializedVersion: 4

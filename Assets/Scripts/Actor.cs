@@ -31,6 +31,8 @@ public abstract class Actor : MonoBehaviour
     // Variable used to determine how fast the player's gun should fire
     [SerializeField] protected float _bulletsPerMinute;
 
+    protected virtual float BulletsPerMinute => _bulletsPerMinute;
+    
     // the speed at which the bullet travels
     [SerializeField] protected float _bulletVelocity;
 
@@ -247,7 +249,7 @@ public abstract class Actor : MonoBehaviour
     /// <returns></returns>
     private IEnumerator TickFireRate()
     {
-        float timeToWait = 60f / _bulletsPerMinute;
+        float timeToWait = 60f / BulletsPerMinute;
         yield return new WaitForSeconds(timeToWait);
 
         _canFire = true;
