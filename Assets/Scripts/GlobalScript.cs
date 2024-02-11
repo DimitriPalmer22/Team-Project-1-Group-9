@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -18,9 +19,12 @@ public class GlobalScript : MonoBehaviour
     private AudioSource _audioSource;
     
     [SerializeField] private TMP_Text scoreText;
-    public TMP_Text ScoreText => scoreText;
 
-    private int _score = 0;
+    private int _score;
+
+    [SerializeField] private TMP_Text timerText;
+
+    private float _timeRemaining = 90;
     
     
     // Start is called before the first frame update
@@ -36,12 +40,26 @@ public class GlobalScript : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (winLossManager != null && winLossManager.GameOver)
+            return;
+        
+        _timeRemaining -= Time.deltaTime;
+        if (_timeRemaining < 0)
+            _timeRemaining = 0;
+        
+        UpdateTimerText();
+        
+        if (_timeRemaining <= 0)
+            winLossManager.ShowLossScreen();
+    }
+
     private void PlayMusic(AudioClip clip)
     {
         if (clip == null)
             return;
 
-        // _audioSource.Stop();
         _audioSource.clip = clip;
         _audioSource.Play();
     }
@@ -60,6 +78,21 @@ public class GlobalScript : MonoBehaviour
         _score += amount;
         
         scoreText.text = $"Score : {_score}";
+    }
+
+    public void UpdateTimerText()
+    {
+        if (timerText == null)
+            return;
+        
+        float divTime = _timeRemaining;
+        
+        int minutes = (int) (divTime / 60);
+        divTime %= 60;
+
+        int seconds = (int) divTime;
+
+        timerText.text = $"{minutes.ToString().PadLeft(2, '0')}:{seconds.ToString().PadLeft(2, '0')}";
     }
     
 }
