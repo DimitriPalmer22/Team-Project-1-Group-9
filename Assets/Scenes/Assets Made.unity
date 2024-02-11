@@ -17642,7 +17642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1098743244
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20102,7 +20102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16dfa9891af117344b4320d7bdb95eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 1
   fixedPoint: {fileID: 1070966467}
 --- !u!212 &1669677677
 SpriteRenderer:
