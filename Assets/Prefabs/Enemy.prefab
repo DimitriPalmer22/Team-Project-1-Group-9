@@ -163,6 +163,7 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 5cb93c6918f1edb4dbb2c0bb45edd64b, type: 3}
   shootSound: {fileID: 8300000, guid: 6109fcb1366ac474dbbd54667397a600, type: 3}
   jumpSound: {fileID: 8300000, guid: e4c8bb2aa41130e4d8105b529e7c50dc, type: 3}
+  scoreValue: 1000
 --- !u!198 &659028047756232100
 ParticleSystem:
   m_ObjectHideFlags: 0
