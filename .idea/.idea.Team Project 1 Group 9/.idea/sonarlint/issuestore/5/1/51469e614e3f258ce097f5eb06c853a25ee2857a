@@ -1,8 +1,5 @@
 
 Gcsharpsquid:S3903"+Move 'GlobalScript' into a named namespace.(Ìİ¥G
-mcsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(Ûî»ùÿÿÿÿ8ªÓ›²Ù1
-~csharpsquid:S2696"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(²Ñûèÿÿÿÿÿ8ÀİÚ¯Ù1
-Bcsharpsquid:S125
-"Remove this commented out code.(ıø¹Ö8³•²Ù1
-Bcsharpsquid:S125"Remove this commented out code.(˜ÿ¾ş8ÊÇ•²Ù1
-Bcsharpsquid:S125"Remove this commented out code.(Ú°à¬8­ç”²Ù1
+mcsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(Ûî»ùÿÿÿÿ8ªÓ›²Ù1
+~csharpsquid:S2696"UMake the enclosing instance method 'static' or remove this set on the 'static' field.(²Ñûèÿÿÿÿÿ8ÀİÚ¯Ù1

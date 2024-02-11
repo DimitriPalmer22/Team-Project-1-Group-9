@@ -1,6 +1,5 @@
 
-Jcsharpsquid:S3903"-Move 'WinLossManager' into a named namespace.(ï¢å
-fcsharpsquid:S1104	"DMake this field 'private' and encapsulate it in a 'public' property.(Á˜òÊÿÿÿÿÿ
-acsharpsquid:S1104
-"DMake this field 'private' and encapsulate it in a 'public' property.(à®½
-bcsharpsquid:S34001"9Remove this method and declare a constant for this value.(ÉÂâ¿ÿÿÿÿÿ8ü£²Ù1
+Jcsharpsquid:S3903"-Move 'WinLossManager' into a named namespace.(ï¢å
+fcsharpsquid:S1104
+"DMake this field 'private' and encapsulate it in a 'public' property.(Á˜òÊÿÿÿÿÿ
+acsharpsquid:S1104"DMake this field 'private' and encapsulate it in a 'public' property.(à®½

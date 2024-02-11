@@ -7,11 +7,8 @@ public class GlobalScript : MonoBehaviour
     private static GameObject _player;
     public static GameObject Player => _player;
 
-    // [SerializeField] private GameObject _loseUI;
-    // [SerializeField] private GameObject _winUI;
     [SerializeField] public WinLossManager winLossManager;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,27 +16,10 @@ public class GlobalScript : MonoBehaviour
         Instance = this;
 
         _player = GameObject.FindWithTag("Player");
-        
-        // _loseUI.SetActive(false);
-        // _winUI.SetActive(false);
-    }
 
-    // public void Win()
-    // {
-    //     // Freeze the game time.
-    //     Time.timeScale = 0f; 
-    //     
-    //     _loseUI.SetActive(false);
-    //     _winUI.SetActive(true);
-    // }
-    //
-    // public void Lose()
-    // {
-    //     // Freeze the game time.
-    //     Time.timeScale = 0f; 
-    //     
-    //     _loseUI.SetActive(true);
-    //     _winUI.SetActive(false);
-    // }
+        Time.timeScale = 1;
+        Debug.Log($"TIME SCALE: {Time.timeScale}");
+        
+    }
 
 }
