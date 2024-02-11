@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GlobalScript : MonoBehaviour
@@ -15,6 +16,12 @@ public class GlobalScript : MonoBehaviour
     [SerializeField] private AudioClip loseMusic;
 
     private AudioSource _audioSource;
+    
+    [SerializeField] private TMP_Text scoreText;
+    public TMP_Text ScoreText => scoreText;
+
+    private int _score = 0;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -45,4 +52,14 @@ public class GlobalScript : MonoBehaviour
     public void PlayGameplayMusic() => PlayMusic(gameplayMusic);
     public void PlayPauseMusic() => PlayMusic(pauseMusic);
 
+    public void AddScore(int amount)
+    {
+        if (scoreText == null)
+            return;
+        
+        _score += amount;
+        
+        scoreText.text = $"Score : {_score}";
+    }
+    
 }

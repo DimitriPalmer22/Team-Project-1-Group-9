@@ -27,6 +27,8 @@ public class PlayerController : Actor
     /// </summary>
     private bool _shootingThisFrame;
 
+    [Header("UI")]
+    
     [SerializeField] private TMP_Text healthText;
 
     private Powerups _powerUps;
