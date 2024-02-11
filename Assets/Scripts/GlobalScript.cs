@@ -6,6 +6,9 @@ public class GlobalScript : MonoBehaviour
 
     private static GameObject _player;
     public static GameObject Player => _player;
+
+    [SerializeField] private GameObject _loseUI;
+    [SerializeField] private GameObject _winUI;
     
 
     // Start is called before the first frame update
@@ -15,12 +18,27 @@ public class GlobalScript : MonoBehaviour
         Instance = this;
 
         _player = GameObject.FindWithTag("Player");
+        
+        _loseUI.SetActive(false);
+        _winUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Win()
     {
+        // Freeze the game time.
+        Time.timeScale = 0f; 
         
+        _loseUI.SetActive(false);
+        _winUI.SetActive(true);
+    }
+
+    public void Lose()
+    {
+        // Freeze the game time.
+        Time.timeScale = 0f; 
+        
+        _loseUI.SetActive(true);
+        _winUI.SetActive(false);
     }
 
 }
