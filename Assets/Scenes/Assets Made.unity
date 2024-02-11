@@ -20072,8 +20072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5e8b331456b6f44931ba5358621c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loseUI: {fileID: 0}
-  _winUI: {fileID: 0}
+  winLossManager: {fileID: 7833829}
 --- !u!4 &1318527344
 Transform:
   m_ObjectHideFlags: 0

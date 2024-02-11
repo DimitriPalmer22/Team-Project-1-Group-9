@@ -286,7 +286,9 @@ public abstract class Actor : MonoBehaviour
         // Play the clip
         _audioSource.Play();
     }
-    
+
+    public bool IsAlive => _health > 0;
+
 }
 
 public enum ShootingDirection

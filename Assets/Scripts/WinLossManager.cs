@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,16 @@ public class WinLossManager : MonoBehaviour
     public GameObject winScreen; // Assign your win screen GameObject in the inspector
     public GameObject lossScreen; // Assign your loss screen GameObject in the inspector
 
+    private PlayerController _playerController;
+
+    private void Start()
+    {
+        _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        // Assuming CheckWinCondition() and CheckLossCondition() are methods 
-        // that return a bool indicating whether the win or loss conditions have been met.
         if (CheckWinCondition())
         {
             // Show the win screen and pause the game
@@ -25,12 +31,11 @@ public class WinLossManager : MonoBehaviour
         }
     }
 
-    void ShowWinScreen()
+    public void ShowWinScreen()
     {
         winScreen.SetActive(true);
         lossScreen.SetActive(false);
         Time.timeScale = 0; // Pauses the game
-        // Optionally, disable player controls here.
     }
 
     void ShowLossScreen()
@@ -38,7 +43,6 @@ public class WinLossManager : MonoBehaviour
         lossScreen.SetActive(true);
         winScreen.SetActive(false);
         Time.timeScale = 0; // Pauses the game
-        // Optionally, disable player controls here.
     }
 
     // Implement these methods based on your game's win/loss conditions
@@ -51,7 +55,7 @@ public class WinLossManager : MonoBehaviour
     bool CheckLossCondition()
     {
         // Your loss condition code here
-        return false; // Placeholder return
+        return !_playerController.IsAlive; // Placeholder return
     }
 
     // Call this function to resume the game from either screen
@@ -60,6 +64,5 @@ public class WinLossManager : MonoBehaviour
         winScreen.SetActive(false);
         lossScreen.SetActive(false);
         Time.timeScale = 1; // Resumes the game
-        // Optionally, re-enable player controls here.
     }
 }
