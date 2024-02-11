@@ -30,6 +30,8 @@ public class WinLossManager : MonoBehaviour
         winScreen.SetActive(true);
         lossScreen.SetActive(false);
         Time.timeScale = 0; // Pauses the game
+        
+        GlobalScript.Instance.PlayWinMusic();
     }
 
     /// <summary>
@@ -39,15 +41,16 @@ public class WinLossManager : MonoBehaviour
     {
         lossScreen.SetActive(true);
         winScreen.SetActive(false);
-        
         Time.timeScale = 0; // Pauses the game
+        
+        GlobalScript.Instance.PlayLoseMusic();
     }
 
     
     bool CheckLossCondition()
     {
         // Game is over when the player dies
-        return !_playerController.IsAlive; 
+        return !_playerController.IsAlive && !lossScreen.activeSelf; 
     }
 
     // Call this function to resume the game from either screen

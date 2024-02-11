@@ -264,7 +264,6 @@ public abstract class Actor : MonoBehaviour
     /// <param name="amount"></param>
     public void LoseHealth(int amount)
     {
-        Debug.Log($"IS PLAYER?: {_isPlayer} {GameSettings.IsHardcore} {GameSettings.IsInfiniteHealth}");
         
         // Don't lose health if this is the player and there is infinite health
         if (GameSettings.IsInfiniteHealth && _isPlayer)
