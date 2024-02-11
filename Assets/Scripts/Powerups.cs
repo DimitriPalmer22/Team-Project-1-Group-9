@@ -1,21 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Powerups : MonoBehaviour
 {
     private PlayerController _controller;
 
-    // Variables for Speed Powerup
+    // Variables for Speed Power up
     public bool hasSpeedPowerUp { get; private set; }
     public const float SpeedMultiplier = 1.5f;
     public const float JumpMultiplier = 1.25f;
-    private const float SpeedTime = 5.0f; // How long powerup is active
+    private const float SpeedTime = 5.0f; // How long power up is active
     private float _speedTimer; // Timer variable
 
-    // Variables for Rate Of Fire Powerup
+    // Variables for Rate Of Fire Power up
     public bool hasRateOfFirePowerUp { get; private set; }
     public const float RateOfFireMultiplier = 2f;
     private const float RateOfFireTime = 5.0f;
