@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Actor : MonoBehaviour
 {
@@ -39,6 +41,9 @@ public abstract class Actor : MonoBehaviour
     [SerializeField] protected Transform firingPoint;
     
     [SerializeField] private int _health;
+    
+    // Determine which firing vector to use
+    [FormerlySerializedAs("_shooting")] [SerializeField] private ShootingDirection _shootingDirection;
     
     // a vector2 to determine how far away the 
     private Vector2 _firingPointOffset;
@@ -183,11 +188,8 @@ public abstract class Actor : MonoBehaviour
         var bulletObject = Instantiate(bulletPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
         var bulletScript = bulletObject.GetComponent<BulletScript>();
 
-        // determine which direction vector the bullet is going to use
-        var bulletVelocity = _rightOrLeft ? -_bulletVelocity : _bulletVelocity;
-        
         // start moving the bullet
-        bulletScript.MoveBullet(new Vector2(bulletVelocity, 0), tag, _bulletDamage);
+        bulletScript.MoveBullet(GetFiringDirection().normalized * _bulletVelocity, tag, _bulletDamage);
         
         // Stop the actor from being able to fire again
         // Start a coroutine to tick the gun's fire rate
@@ -208,6 +210,30 @@ public abstract class Actor : MonoBehaviour
         // Start a coroutine to tick the gun's fire rate
         StartCoroutine(TickFireRate());
 
+    }
+
+    private Vector2 GetFiringDirection()
+    {
+        Vector2 shootingVector;
+        
+        switch (_shootingDirection)
+        {
+            case ShootingDirection.Normal:
+                shootingVector = new Vector2(1, 0);
+                break;
+            case ShootingDirection.Artillery:
+                shootingVector = new Vector2(1, 1);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
+        // determine which direction vector the bullet is going to use
+        // Going left
+        if (_rightOrLeft)
+            shootingVector = new Vector2(-shootingVector.x, shootingVector.y);
+        
+        return shootingVector;
     }
     
     /// <summary>
@@ -260,4 +286,10 @@ public abstract class Actor : MonoBehaviour
         _audioSource.Play();
     }
     
+}
+
+public enum ShootingDirection
+{
+    Normal, 
+    Artillery
 }

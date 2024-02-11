@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4005965587572805992}
   - component: {fileID: 5680795852259729875}
   - component: {fileID: 2655688995451630298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Artillery Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -153,11 +153,12 @@ MonoBehaviour:
   movementSpeed: 6
   jumpForce: 4
   _bulletsPerMinute: 30
-  _bulletVelocity: 8
+  _bulletVelocity: 6
   _bulletDamage: 2
-  bulletPrefab: {fileID: 3969109867601141775, guid: eeabf76ee7a070f4fb3091f5f8d2de72, type: 3}
+  bulletPrefab: {fileID: 3641160310829554347, guid: da1242c170cc5154ea8d027283a0a4bb, type: 3}
   firingPoint: {fileID: 1071764161804122061}
   _health: 2
+  _shootingDirection: 1
   hurtSound: {fileID: 8300000, guid: 5cb93c6918f1edb4dbb2c0bb45edd64b, type: 3}
   shootSound: {fileID: 8300000, guid: 6109fcb1366ac474dbbd54667397a600, type: 3}
   jumpSound: {fileID: 8300000, guid: e4c8bb2aa41130e4d8105b529e7c50dc, type: 3}
