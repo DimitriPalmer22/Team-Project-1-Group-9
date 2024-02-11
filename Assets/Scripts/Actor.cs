@@ -46,13 +46,13 @@ public abstract class Actor : MonoBehaviour
     [FormerlySerializedAs("_shooting")] [SerializeField] private ShootingDirection _shootingDirection;
     
     // a vector2 to determine how far away the 
-    private Vector2 _firingPointOffset;
-    private bool _rightOrLeft;
+    protected Vector2 _firingPointOffset;
+    protected bool _rightOrLeft;
     
     // Particles variables
     
     // Variable for the particle system used when shooting
-    private ParticleSystem _shootingParticleSystem;
+    protected ParticleSystem _shootingParticleSystem;
 
     // Variable for the particle system used when jumping
     private ParticleSystem _jumpingParticleSystem;

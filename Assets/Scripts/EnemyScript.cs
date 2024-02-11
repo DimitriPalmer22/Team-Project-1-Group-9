@@ -35,7 +35,26 @@ public class EnemyScript : Actor
     {
         // player is to the left of this enemy
         if (GlobalScript.Player.transform.position.x < transform.position.x)
-            return;
+        {
+            _spriteRenderer.flipX = _rightOrLeft = true;
+            firingPoint.localPosition = new Vector3(-_firingPointOffset.x, _firingPointOffset.y, 0);
+            
+            // Flip the shooting particle emitter
+            var shape = _shootingParticleSystem.shape;
+            shape.rotation = new Vector3(shape.rotation.x, -90, shape.rotation.z);
+        }
+        
+        // player is to the right of this enemy
+        else if (GlobalScript.Player.transform.position.x > transform.position.x)
+        {
+            _spriteRenderer.flipX = _rightOrLeft = false;
+            firingPoint.localPosition = new Vector3(_firingPointOffset.x, _firingPointOffset.y, 0);
+
+            // Flip the shooting particle emitter
+            var shape = _shootingParticleSystem.shape;
+            shape.rotation = new Vector3(shape.rotation.x, 90, shape.rotation.z);
+            
+        }
     }
 
     protected override bool FireInput()
