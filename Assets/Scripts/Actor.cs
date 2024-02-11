@@ -271,6 +271,11 @@ public abstract class Actor : MonoBehaviour
         
         return shootingVectors;
     }
+
+    public void ChangeShootingType(ShootingDirection type)
+    {
+        _shootingDirection = type;
+    }
     
     /// <summary>
     /// A coroutine that determines when the player can fire again based on
