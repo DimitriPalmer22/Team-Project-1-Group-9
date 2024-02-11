@@ -156,8 +156,10 @@ MonoBehaviour:
   _bulletVelocity: 6
   _bulletDamage: 1
   bulletPrefab: {fileID: 3969109867601141775, guid: eeabf76ee7a070f4fb3091f5f8d2de72, type: 3}
+  artilleryBulletPrefab: {fileID: 3641160310829554347, guid: da1242c170cc5154ea8d027283a0a4bb, type: 3}
   firingPoint: {fileID: 1227803539823165894}
   _health: 1
+  _shootingDirection: 0
   hurtSound: {fileID: 8300000, guid: 5cb93c6918f1edb4dbb2c0bb45edd64b, type: 3}
   shootSound: {fileID: 8300000, guid: 6109fcb1366ac474dbbd54667397a600, type: 3}
   jumpSound: {fileID: 8300000, guid: e4c8bb2aa41130e4d8105b529e7c50dc, type: 3}

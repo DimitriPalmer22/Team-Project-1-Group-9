@@ -111,6 +111,7 @@ MonoBehaviour:
   _bulletVelocity: 10
   _bulletDamage: 1
   bulletPrefab: {fileID: 3212702969348104815, guid: 10247b486fa4c9e45a0d55c9e29873e7, type: 3}
+  artilleryBulletPrefab: {fileID: 3641160310829554347, guid: da1242c170cc5154ea8d027283a0a4bb, type: 3}
   firingPoint: {fileID: 2539115130748907927}
   _health: 3
   _shootingDirection: 0
@@ -130,8 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31429dbb592eaec4a94fc96d49089fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasSpeedPowerup: 0
-  hasRateOfFirePowerup: 0
 --- !u!50 &1067764871109330723
 Rigidbody2D:
   serializedVersion: 4

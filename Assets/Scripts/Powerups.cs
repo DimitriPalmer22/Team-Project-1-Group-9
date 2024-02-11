@@ -50,7 +50,7 @@ public class Powerups : MonoBehaviour
 
     void Update()
     {
-        // If speed powerup, run timer and then revert movementSpeed to normal
+        // If speed power up, run timer and then revert movementSpeed to normal
         if (hasSpeedPowerUp)
         {
             _speedTimer -= Time.deltaTime;
@@ -59,7 +59,7 @@ public class Powerups : MonoBehaviour
                 hasSpeedPowerUp = false;
         }
 
-        // If rateOfFire powerup, run timer and then revert rateOfFire to normal
+        // If rateOfFire power up, run timer and then revert rateOfFire to normal
         if (hasRateOfFirePowerUp)
         {
             _rateOfFireTimer -= Time.deltaTime;

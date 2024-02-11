@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -40,6 +41,8 @@ public abstract class Actor : MonoBehaviour
 
     // Game object to use as bullets
     [SerializeField] protected GameObject bulletPrefab;
+
+    [SerializeField] protected GameObject artilleryBulletPrefab;
     
     // A transform to use as a starting point for projectiles
     [SerializeField] protected Transform firingPoint;
@@ -190,13 +193,24 @@ public abstract class Actor : MonoBehaviour
     /// </summary>
     private void Fire()
     {
-        // create a new bullet and access its script
-        var bulletObject = Instantiate(bulletPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
-        var bulletScript = bulletObject.GetComponent<BulletScript>();
+        foreach (var direction in GetFiringDirection())
+        {
+            GameObject currentPrefab = bulletPrefab;
+            float currentBulletVelocity = _bulletVelocity;
+            if (_shootingDirection == ShootingDirection.Carpet)
+            {
+                currentPrefab = artilleryBulletPrefab;
+                currentBulletVelocity = 6;
+            }            
+            
+            // create a new bullet and access its script
+            var bulletObject = Instantiate(currentPrefab, parent: null, position: firingPoint.position, rotation: Quaternion.identity);
+            var bulletScript = bulletObject.GetComponent<BulletScript>();
 
-        // start moving the bullet
-        bulletScript.MoveBullet(GetFiringDirection().normalized * _bulletVelocity, tag, _bulletDamage);
-        
+            // start moving the bullet
+            bulletScript.MoveBullet(direction.normalized * currentBulletVelocity, tag, _bulletDamage);
+        }
+
         // Stop the actor from being able to fire again
         // Start a coroutine to tick the gun's fire rate
         ResetCanFire();
@@ -218,18 +232,27 @@ public abstract class Actor : MonoBehaviour
 
     }
 
-    private Vector2 GetFiringDirection()
+    private List<Vector2> GetFiringDirection()
     {
-        Vector2 shootingVector;
+        List<Vector2> shootingVectors = new();
         
         switch (_shootingDirection)
         {
             case ShootingDirection.Normal:
-                shootingVector = new Vector2(1, 0);
+                shootingVectors.Add(new Vector2(1, 0));
                 break;
+            
             case ShootingDirection.Artillery:
-                shootingVector = new Vector2(1, 1);
+                shootingVectors.Add(new Vector2(1, 1));
                 break;
+            
+            case ShootingDirection.Carpet:
+                float carpetAngle = .6f;
+                shootingVectors.Add(new Vector2(carpetAngle, 1));
+                shootingVectors.Add(new Vector2(1, 1));
+                shootingVectors.Add(new Vector2(1, carpetAngle));
+                break;
+
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -237,9 +260,16 @@ public abstract class Actor : MonoBehaviour
         // determine which direction vector the bullet is going to use
         // Going left
         if (_rightOrLeft)
-            shootingVector = new Vector2(-shootingVector.x, shootingVector.y);
+        {
+            for (int i = 0; i < shootingVectors.Count; i++)
+            {
+                var cVector = shootingVectors[i];
+                shootingVectors[i] = new Vector2(-cVector.x, cVector.y);
+
+            }
+        }
         
-        return shootingVector;
+        return shootingVectors;
     }
     
     /// <summary>
@@ -308,5 +338,6 @@ public abstract class Actor : MonoBehaviour
 public enum ShootingDirection
 {
     Normal, 
-    Artillery
+    Artillery,
+    Carpet
 }
