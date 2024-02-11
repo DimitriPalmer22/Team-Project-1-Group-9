@@ -7,6 +7,8 @@ public abstract class Actor : MonoBehaviour
 {
 
     #region Variables
+
+    protected bool _isPlayer;
     
     // Unity components
     protected Rigidbody2D _rb;
@@ -261,13 +263,23 @@ public abstract class Actor : MonoBehaviour
     /// <param name="amount"></param>
     public void LoseHealth(int amount)
     {
+        Debug.Log($"IS PLAYER?: {_isPlayer} {GameSettings.IsHardcore} {GameSettings.IsInfiniteHealth}");
+        
+        // Don't lose health if this is the player and there is infinite health
+        if (GameSettings.IsInfiniteHealth && _isPlayer)
+            return;
+        
         // Lose health
         _health -= amount;
+
+        // If hardcore, die
+        if (GameSettings.IsHardcore && _isPlayer)
+            _health = 0;
         
         // Play the hurt sound
         PlaySound(hurtSound);
         
-        // Die if health is too low
+        // Die if health is too low 
         if (_health <= 0)
             Die();
     }

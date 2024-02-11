@@ -18,7 +18,6 @@ public class GlobalScript : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
 
         Time.timeScale = 1;
-        Debug.Log($"TIME SCALE: {Time.timeScale}");
         
     }
 

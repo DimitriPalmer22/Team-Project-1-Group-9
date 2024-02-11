@@ -32,6 +32,9 @@ public class PlayerController : Actor
 
         // Get the animator
         _animator = GetComponent<Animator>();
+
+        // Let the actor script know that this is a player
+        _isPlayer = true;
     }
 
     protected override void Update()

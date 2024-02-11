@@ -10,6 +10,20 @@ public class ToggleFillImage : MonoBehaviour
     void Start()
     {
         _buttonImage = GetComponent<Image>();
+        
+        // Match the button's fill to the setting's value
+        switch (_gameSettingType)
+        {
+            case GameSettingType.Hardcore:
+                _buttonImage.fillCenter = GameSettings.IsHardcore;
+                break;
+            case GameSettingType.InfiniteHealth:
+                _buttonImage.fillCenter = GameSettings.IsInfiniteHealth;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
     }
 
     public void ToggleFill()
