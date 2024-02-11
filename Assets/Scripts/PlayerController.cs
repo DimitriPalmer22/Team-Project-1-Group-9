@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float jumpForce;
+    [SerializeField] public float movementSpeed;
+    [SerializeField] public float jumpForce;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int _health;
     
     // Variable used to determine how fast the player's gun should fire
-    [SerializeField] private float _bulletsPerMinute;
+    [SerializeField] public float _bulletsPerMinute;
     
     // Start is called before the first frame update
     void Start()
