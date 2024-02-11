@@ -43,6 +43,7 @@ public abstract class Actor : MonoBehaviour
     [SerializeField] protected Transform firingPoint;
     
     [SerializeField] private int _health;
+    public int Health => _health;
     
     // Determine which firing vector to use
     [FormerlySerializedAs("_shooting")] [SerializeField] private ShootingDirection _shootingDirection;

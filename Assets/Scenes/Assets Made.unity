@@ -18481,6 +18481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069937554}
   - component: {fileID: 1069937553}
+  - component: {fileID: 1069937555}
   m_Layer: 0
   m_Name: Win Zone
   m_TagString: Untagged
@@ -18498,7 +18499,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 10.053284, y: 7.091243}
@@ -18529,6 +18530,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1069937555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069937552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab91b3cc9b972642b388d5aa5959714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneType: 0
 --- !u!1 &1070966465
 GameObject:
   m_ObjectHideFlags: 0
@@ -19689,6 +19703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1418569243}
   - component: {fileID: 1418569242}
+  - component: {fileID: 1418569244}
   m_Layer: 0
   m_Name: Dead Zone
   m_TagString: Untagged
@@ -19706,10 +19721,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 190.53244, y: -10.260689}
+  m_Offset: {x: 229.70764, y: -10.260689}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -19720,7 +19735,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 462.1839, y: 10.339722}
+  m_Size: {x: 862.88965, y: 10.339722}
   m_EdgeRadius: 0
 --- !u!4 &1418569243
 Transform:
@@ -19737,6 +19752,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1418569244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418569241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab91b3cc9b972642b388d5aa5959714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneType: 1
 --- !u!1001 &1429156629
 PrefabInstance:
   m_ObjectHideFlags: 0
