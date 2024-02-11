@@ -19,9 +19,23 @@ public class EnemyScript : Actor
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    protected override void Update()
+    {
+        DetermineEnemyDirection();
+        
+        base.Update();
+    }
+
     protected override Vector2 MovementInput()
     {
         return Vector2.zero;
+    }
+
+    private void DetermineEnemyDirection()
+    {
+        // player is to the left of this enemy
+        if (GlobalScript.Player.transform.position.x < transform.position.x)
+            return;
     }
 
     protected override bool FireInput()

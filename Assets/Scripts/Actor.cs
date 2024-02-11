@@ -123,6 +123,7 @@ public abstract class Actor : MonoBehaviour
     /// <summary>
     /// Function that contains the movement & jump logic
     /// </summary>
+    /// <returns></returns>
     protected abstract Vector2 MovementInput();
 
     /// <summary>
