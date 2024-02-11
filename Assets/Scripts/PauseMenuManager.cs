@@ -31,7 +31,7 @@ public class PauseMenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GlobalScript.Instance.winLossManager.GameOver)
         {
             if (_isPaused)
                 ResumeGame();
@@ -50,6 +50,8 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 1f; 
         
         _isPaused = false;
+        
+        GlobalScript.Instance.PlayGameplayMusic();
     }
 
     private void PauseGame()
@@ -66,6 +68,8 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 0f; 
         
         _isPaused = true;
+        
+        GlobalScript.Instance.PlayPauseMusic();
     }
 
     public void GoToMainMenuFromPause()

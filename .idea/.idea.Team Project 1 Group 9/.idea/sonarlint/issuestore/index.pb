@@ -23,11 +23,15 @@ R
 PLibrary/PackageCache/com.unity.2d.animation@7.0.13/Runtime/TransformAccessJob.cs,2\a\2a8587c066f24bb6f1f3a90142a7513546232d39
 N
 Assets/Scripts/GameSettings.cs,6\2\62e0d6aafc49643a7403d199d6c35683444e0d38
-R
-"Assets/Scripts/ToggleFillCenter.cs,b\f\bf532903e04e0337d7d66d6e31f73c05b3775084
 W
 'Assets/Scripts/ArtilleryBulletScript.cs,6\f\6f653987abc9f4a35ff5394c51d1377691604e24
 P
  Assets/Scripts/WinLossManager.cs,2\c\2c97e8953a150e80ed701a100cf91005705ea2f8
 Q
 !Assets/Scripts/ToggleFillImage.cs,0\9\096ac760823c07848abb52e72aa6750901684cc3
+S
+#Assets/Scripts/WinLossZoneScript.cs,d\b\db798d84693728ad7b9c3dd2f3f3fafadf9abdb5
+w
+GLibrary/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/InputField.cs,2\9\2926c25beceae7e9d85954689480b79b7ce7b5e4
+J
+Assets/Scripts/Powerups.cs,d\c\dc5d0ac24298a472676e6c7a98420cc04ea44c0c

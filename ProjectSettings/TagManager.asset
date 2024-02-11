@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - SpeedPowerup
+  - RateOfFirePowerup
+  - CarpetPowerup
   layers:
   - Default
   - TransparentFX

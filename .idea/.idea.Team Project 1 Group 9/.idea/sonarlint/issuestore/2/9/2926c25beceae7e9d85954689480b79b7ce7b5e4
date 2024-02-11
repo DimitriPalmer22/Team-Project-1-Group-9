@@ -1,0 +1,30 @@
+
+]csharpsquid:S110"<This class has 6 parents which is greater than 5 authorized.(‰ß½þÿÿÿÿ
+ecsharpsquid:S1764•"GCorrect one of the identical expressions on both sides of operator '/'.(”ŸÔÚ
+pcsharpsquid:S3776Þ"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(Ö­ô
+ucsharpsquid:S3776‰"RRefactor this method to reduce its Cognitive Complexity from 65 to the 15 allowed.(ˆº…þùÿÿÿÿ
+ucsharpsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(»–žÖüÿÿÿÿ
+pcsharpsquid:S3776ÿ"RRefactor this method to reduce its Cognitive Complexity from 38 to the 15 allowed.(©ó¾ 
+pcsharpsquid:S3776Ð"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(Éƒ¤¸
+ucsharpsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 62 to the 15 allowed.(˜ÙÒ©úÿÿÿÿ
+qcsharpsquid:S3776˜"SRefactor this method to reduce its Cognitive Complexity from 105 to the 15 allowed.(—ùÞ
+Gcsharpsquid:S2933Á"$Make 'm_ProcessingEvent' 'readonly'.(¾±ø­ýÿÿÿÿ
+Rcsharpsquid:S1066¹"/Merge this if statement with the enclosing one.(ûñòæþÿÿÿÿ
+Rcsharpsquid:S1066Þ"/Merge this if statement with the enclosing one.(½¥†Éýÿÿÿÿ
+Mcsharpsquid:S1066§"/Merge this if statement with the enclosing one.(˜±ö•
+Mcsharpsquid:S1066à"/Merge this if statement with the enclosing one.(°Àœ
+Mcsharpsquid:S1066Õ"/Merge this if statement with the enclosing one.(àÍþ 
+Mcsharpsquid:S1066×"/Merge this if statement with the enclosing one.(¿™Éß
+Mcsharpsquid:S1066Þ"/Merge this if statement with the enclosing one.(õ‘øØ
+Mcsharpsquid:S1066á"/Merge this if statement with the enclosing one.(¿™Éß
+Rcsharpsquid:S1066¡"/Merge this if statement with the enclosing one.(Å™žÝøÿÿÿÿ
+Tcsharpsquid:S4136Ö"1All 'Append' method overloads should be adjacent.(Áûãõþÿÿÿÿ
+Scsharpsquid:S1133Ú"5Do not forget to remove this deprecated code someday.(¤ÉÕþ
+Rcsharpsquid:S1133Ž"5Do not forget to remove this deprecated code someday.(Ùºú&
+ncsharpsquid:S927"LRename parameter 'update' to 'executing' to match the interface declaration.(«ñŒ…ùÿÿÿÿ
+<csharpsquid:S125¬"Remove this commented out code.(Íæé²
+Rcsharpsquid:S1135ˆ"4Complete the task associated to this 'TODO' comment.(¥¯§ª
+Wcsharpsquid:S1135‘"4Complete the task associated to this 'TODO' comment.(‰Ç¥ÿÿÿÿÿ
+jcsharpsquid:S1134´"LTake the required action to fix the issue indicated by this 'FIXME' comment.(ÿ–ò
+pcsharpsquid:S3776Þ"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(Ö­ô
+Scsharpsquid:S1133Ž"5Do not forget to remove this deprecated code someday.(Á©¶£

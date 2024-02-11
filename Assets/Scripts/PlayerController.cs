@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : Actor
@@ -26,6 +27,22 @@ public class PlayerController : Actor
     /// </summary>
     private bool _shootingThisFrame;
 
+    [SerializeField] private TMP_Text healthText;
+
+    private Powerups _powerUps;
+
+    protected override float BulletsPerMinute
+    {
+        get
+        {
+            float powerUpMultiplier = 1;
+            if (_powerUps != null && _powerUps.hasRateOfFirePowerUp)
+                powerUpMultiplier = Powerups.RateOfFireMultiplier;
+            
+            return _bulletsPerMinute * powerUpMultiplier;
+        }
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -35,6 +52,9 @@ public class PlayerController : Actor
 
         // Let the actor script know that this is a player
         _isPlayer = true;
+        
+        // Get the powerups script
+        _powerUps = GetComponent<Powerups>();
     }
 
     protected override void Update()
@@ -46,6 +66,9 @@ public class PlayerController : Actor
         
         // Determine the current animation
         DetermineAnimation();
+        
+        // Update Health Text
+        UpdateHealthText();
     }
 
     protected override void FixedUpdate()
@@ -58,10 +81,14 @@ public class PlayerController : Actor
         if (_jumpThisFrame)
         {
             Jump();
+
+            float powerUpMultiplier = 1;
+            if (_powerUps.hasSpeedPowerUp)
+                powerUpMultiplier = Powerups.JumpMultiplier;
             
             // Jump using the rigid body
             _rb.velocity = new Vector2(_rb.velocity.x, 0);
-            _rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+            _rb.AddForce(transform.up * (jumpForce * powerUpMultiplier), ForceMode2D.Impulse);
             
             // reset variables
             _onGround = false;
@@ -83,7 +110,11 @@ public class PlayerController : Actor
         if (jumpButtonPressed && _onGround)
             _jumpThisFrame = true;
 
-        return new Vector2(horizontalInput, 0);
+        float powerUpMultiplier = 1;
+        if (_powerUps.hasSpeedPowerUp)
+            powerUpMultiplier = Powerups.SpeedMultiplier;
+        
+        return new Vector2(horizontalInput * powerUpMultiplier, 0);
     }
     
     /// <summary>
@@ -199,4 +230,25 @@ public class PlayerController : Actor
         // Force the shooting animation to play / restart if a bullet is fired this frame
         _animator.Play("Player Shooting Animation", -1, 0f);
     }
+    
+    private void UpdateHealthText()
+    {
+        if (healthText == null)
+            return;
+        
+        if (GameSettings.IsHardcore)
+        {
+            healthText.text = "HARDCORE";
+            return;
+        }
+
+        if (GameSettings.IsInfiniteHealth)
+        {
+            healthText.text = "Health : INFINITE";
+            return;
+        }
+
+        healthText.text = $"Health : {Health}";
+    }
+    
 }
