@@ -103,6 +103,9 @@ public class PlayerController : Actor
     /// </summary>
     protected override Vector2 MovementInput()
     {
+        if (GlobalScript.Instance.winLossManager.GameOver)
+            return Vector2.zero;
+            
         // Get the left and right movement input (A & D or Left & Right)
         var horizontalInput = Input.GetAxisRaw("Horizontal");
         
@@ -124,6 +127,9 @@ public class PlayerController : Actor
     /// </summary>
     protected override bool FireInput()
     {
+        if (GlobalScript.Instance.winLossManager.GameOver)
+            return false;
+                
         if (!Input.GetKey(KeyCode.Space))
             return false;
         
