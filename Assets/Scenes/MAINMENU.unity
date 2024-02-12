@@ -924,6 +924,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winLossManager: {fileID: 0}
+  gameplayMusic: {fileID: 0}
+  pauseMusic: {fileID: 0}
+  winMusic: {fileID: 0}
+  loseMusic: {fileID: 0}
+  scoreText: {fileID: 0}
+  timerText: {fileID: 0}
 --- !u!4 &212135613
 Transform:
   m_ObjectHideFlags: 0
@@ -4122,7 +4128,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shoot enemies to eliminate them. Defeat all enemies to win the game!
+  m_text: "Shoot enemies to defeat them. \nAvoid Getting Hit. \nReach the end of
+    the level by any means to win!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
